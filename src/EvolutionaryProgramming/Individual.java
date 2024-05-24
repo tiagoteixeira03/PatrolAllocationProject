@@ -1,14 +1,20 @@
 package EvolutionaryProgramming;
 
+import DiscreteStochasticSimulation.EventManager;
+
 public class Individual {
 	float fitting;
 	int[] distribution;
+	EventManager eventmanager;
 	
-	public Individual(float currentSimTime) {
-		innitEvents(currentSimTime);
+	
+	
+	public Individual(EventManager eventmanager_) {
+		eventmanager = eventmanager_;
+		innitEvents(eventmanager);
 	}
 	
-	public void innitEvents(float currentSimTime) {
-		
+	public void innitEvents(EventManager eventmanager) {
+		new EventReproduction(this, eventmanager, );
 	}
 }
