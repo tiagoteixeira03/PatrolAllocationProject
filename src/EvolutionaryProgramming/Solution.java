@@ -1,7 +1,7 @@
 package EvolutionaryProgramming;
 
 public interface Solution {
-	public float getFitting();
+	public double getFitting();
 	
 	public void generateRandomSolution();
 	

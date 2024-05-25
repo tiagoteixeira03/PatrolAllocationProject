@@ -17,7 +17,7 @@ public class PatrolAllocation {
 	}
 	
 	private static void generateMatrix() {
-		int minLine=0;
+		int minLine=11;
 		
 		for(int i=0; i<nrPatrols; i++) {
 			for(int j=0; j<nrPlanetSystems; j++) {
@@ -26,7 +26,7 @@ public class PatrolAllocation {
 					minLine = matrixC[i][j];					
 			}
 			tmin +=minLine;
-			minLine=0;
+			minLine=11;
 		}
 		tmin = tmin/nrPatrols;
 	}
