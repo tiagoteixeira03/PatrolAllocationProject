@@ -4,23 +4,21 @@ import DiscreteStochasticSimulation.EventManager;
 
 public abstract class Event {
 	Individual ind;
-	float simTime;
+	double simTime;
 	EventManager eventmanager;
-	RandomDecider randomdecider;
+	TimeIncrementStrategy timeincr;
 	
-	public Event(Individual ind_, EventManager eventmanager_, RandomDecider randomdecider_) {
+	public Event(Individual ind_, EventManager eventmanager_, TimeIncrementStrategy timeincr_) {
 		ind = ind_;
 		eventmanager = eventmanager_;
-		randomdecider = randomdecider_;
-		simTime = randomdecider.getRandomTime(ind.fitting);
+		timeincr = timeincr_;
+		simTime = timeincr.getRandomTime(ind.fitting);
 		eventmanager.scheduleEvent((IEv) this);
 	}
 	
-	public void simulate(EventManager eventmanager) {
+	public abstract void simulate(EventManager eventmanager);
 	
-	}
-	
-	public float getSimTime() {
+	public double getSimTime() {
 		return simTime;
 	}
 }

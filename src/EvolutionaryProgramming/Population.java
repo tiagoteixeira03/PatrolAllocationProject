@@ -17,10 +17,18 @@ public class Population {
 		numIndivMax = numIndivMax_;	
 	}
 	
-	public static Population getInstance(int numIndivInit, int numIndivMax) {
+	public static Population getInstance() {
 		if(instance==null) {
-			instance = new Population(numIndivInit, numIndivMax);
+			instance = new Population(EvolutionaryProgramming.initPopSize, EvolutionaryProgramming.popMaxSize);
 		}
 		return instance;
+	}
+	
+	public void addIndtoPop(Individual ind) {
+		pop.add(ind);
+	}
+	
+	public void removeIndfromPop(Individual ind) {
+		pop.remove(ind);
 	}
 }

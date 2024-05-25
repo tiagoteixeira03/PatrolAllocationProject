@@ -5,14 +5,14 @@ import DiscreteStochasticSimulation.EventManager;
 public class EventReproduction extends Event {
 	Individual ind;
 	EventManager eventmanager;
-	RandomDecider randomdecider;
+	TimeIncrementStrategy timestrat;
 	
-	public EventReproduction(Individual ind_, EventManager eventmanager_, RandomDecider randomdecider_) {
-		super(ind_, eventmanager_, randomdecider_);
+	public EventReproduction(Individual ind_, EventManager eventmanager_, TimeIncrementStrategy timestrat_) {
+		super(ind_, eventmanager_, timestrat_);
 	}
 	
 	public void simulate(EventManager eventmanager) {
-		new Individual(eventmanager.getCurrSimTime());
+		new Individual(eventmanager);
 	}
 	
 

@@ -2,10 +2,12 @@ package DiscreteStochasticSimulation;
 
 public class DiscreteStochasticSimulation {
 	static float simulationTime;
-	static float eventParameter[] = new float[3];
+	static double rho,mu,delta;
 	
-	public static void init(float simulationTime_, float eventParameter_[]) {
+	public static void init(float simulationTime_, double rho_, double mu_, double delta_) {
 		simulationTime = simulationTime_;
-		System.arraycopy(eventParameter_, 0, eventParameter, 0, eventParameter_.length);
+		rho = rho_;
+		mu = mu_;
+		delta = delta_;
 	}
 }

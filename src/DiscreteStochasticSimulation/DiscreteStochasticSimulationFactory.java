@@ -6,12 +6,8 @@ public class DiscreteStochasticSimulationFactory implements ComponentFactory{
 	@Override
 	public void initialize(String[] args) {
 		float simulationTime = Integer.parseInt(args[2]);
-		float eventParameter[] = new float[3];
-
-        for (int i = 5; i < 8; i++) {
-            eventParameter[i] = Float.parseFloat(args[i]);
-        }
+		double mu = Double.parseDouble(args[5]),rho = Double.parseDouble(args[6]), delta = Double.parseDouble(args[7]);
         
-		DiscreteStochasticSimulation.init(simulationTime, eventParameter);
+		DiscreteStochasticSimulation.init(simulationTime, mu, rho, delta);
 	}
 }
