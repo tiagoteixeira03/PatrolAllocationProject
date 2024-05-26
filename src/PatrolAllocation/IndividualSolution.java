@@ -75,9 +75,19 @@ public class IndividualSolution implements Solution {
 	}
 	
 	public void inheritSolution(Solution parentSolution) {
+        IndividualSolution parent = (IndividualSolution) parentSolution;
+        
+        // Clear the current partition
+        partition.clear();
+
+        // Deep copy each list from the parent partition to this partition
+        for (List<Integer> parentList : parent.partition) {
+            List<Integer> newList = new ArrayList<>(parentList);  // Create a new list with the same elements
+            partition.add(newList);
+        }
+        
         Random rand = new Random();
         List<Integer> removedIntegers = new ArrayList<Integer>();
-        IndividualSolution parent = (IndividualSolution) parentSolution;
         
         int IntegersToRemove = (int) Math.floor((1-this.getFitting())*PatrolAllocation.nrPlanetSystems);
 
@@ -86,9 +96,9 @@ public class IndividualSolution implements Solution {
             int fromPatrolIndex;
             do {
                 fromPatrolIndex = rand.nextInt(PatrolAllocation.nrPatrols);
-            } while (parent.partition.get(fromPatrolIndex).isEmpty());
+            } while (partition.get(fromPatrolIndex).isEmpty());
 
-            List<Integer> fromPatrol = parent.partition.get(fromPatrolIndex);
+            List<Integer> fromPatrol = partition.get(fromPatrolIndex);
             int removedIndex = rand.nextInt(fromPatrol.size());
             int removedValue = fromPatrol.remove(removedIndex);
             removedIntegers.add(removedValue);
@@ -100,7 +110,7 @@ public class IndividualSolution implements Solution {
         // Step 3: Randomly redistribute the removed integers across the patrols
         for (int value : removedIntegers) {
             int toPatrolIndex = rand.nextInt(PatrolAllocation.nrPatrols);
-            parent.partition.get(toPatrolIndex).add(value);
+            partition.get(toPatrolIndex).add(value);
         }
 	}
 	
