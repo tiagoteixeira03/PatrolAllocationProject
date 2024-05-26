@@ -12,7 +12,7 @@ public class EventMutation extends Event {
 		super(ind_, eventmanager_, timestrat_, solution_);
 	}
 	
-	public void Simulate(EventManager eventmanager) {
-		
+	public void simulate(EventManager eventmanager) {
+		solution.mutateSolution();
 	}
 }

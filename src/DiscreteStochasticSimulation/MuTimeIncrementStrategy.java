@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class MuTimeIncrementStrategy extends TimeIncrement{
 	Random random;
-	MuTimeIncrementStrategy instance=null;
+	static MuTimeIncrementStrategy instance=null;
 	
 	private MuTimeIncrementStrategy() {
 		
 	}
 	
-	public MuTimeIncrementStrategy getInstance() {
+	public static MuTimeIncrementStrategy getInstance() {
 		if(instance == null) {
 			instance = new MuTimeIncrementStrategy();
 		}

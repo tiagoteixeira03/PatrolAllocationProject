@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class RhoTimeIncrementStrategy extends TimeIncrement{
 	Random random;
-	RhoTimeIncrementStrategy instance=null;
+	static RhoTimeIncrementStrategy instance=null;
 	
 	private RhoTimeIncrementStrategy() {
 		
 	}
 	
-	public RhoTimeIncrementStrategy getInstance() {
+	public static RhoTimeIncrementStrategy getInstance() {
 		if(instance == null) {
 			instance = new RhoTimeIncrementStrategy();
 		}

@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class DeltaTimeIncrementStrategy extends TimeIncrement{
 	Random random;
-	DeltaTimeIncrementStrategy instance=null;
+	static DeltaTimeIncrementStrategy instance=null;
 	
 	private DeltaTimeIncrementStrategy() {
 		
 	}
 	
-	public DeltaTimeIncrementStrategy getInstance() {
+	public static DeltaTimeIncrementStrategy getInstance() {
 		if(instance == null) {
 			instance = new DeltaTimeIncrementStrategy();
 		}

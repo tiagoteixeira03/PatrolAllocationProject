@@ -7,5 +7,7 @@ public interface Solution {
 	
 	public void mutateSolution();
 	
-	public void inheritSolution();
+	public void inheritSolution(Solution parentSolution);
+	
+	public Solution getSolutionObject();
 }
