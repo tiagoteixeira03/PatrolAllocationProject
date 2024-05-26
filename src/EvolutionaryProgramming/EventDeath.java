@@ -7,8 +7,8 @@ public class EventDeath extends Event{
 	EventManager eventmanager;
 	TimeIncrementStrategy timestrat;
 	
-	public EventDeath(Individual ind_, EventManager eventmanager_, TimeIncrementStrategy timestrat_) {
-		super(ind_, eventmanager_, timestrat_);
+	public EventDeath(Individual ind_, EventManager eventmanager_, TimeIncrementStrategy timestrat_, Solution solution_) {
+		super(ind_, eventmanager_, timestrat_, solution_);
 	}
 	
 	public void simulate(EventManager eventmanager) {

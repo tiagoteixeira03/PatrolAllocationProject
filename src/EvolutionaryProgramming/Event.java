@@ -7,11 +7,13 @@ public abstract class Event {
 	double simTime;
 	EventManager eventmanager;
 	TimeIncrementStrategy timeincr;
+	Solution solution;
 	
-	public Event(Individual ind_, EventManager eventmanager_, TimeIncrementStrategy timeincr_) {
+	public Event(Individual ind_, EventManager eventmanager_, TimeIncrementStrategy timeincr_, Solution solution_) {
 		ind = ind_;
 		eventmanager = eventmanager_;
 		timeincr = timeincr_;
+		solution = solution_;
 		simTime = timeincr.getRandomTime(ind.fitting);
 		eventmanager.scheduleEvent((IEv) this);
 	}
