@@ -14,16 +14,19 @@ public class CreateFactories {
 	private MuTimeIncrementStrategy mu = MuTimeIncrementStrategy.getInstance();
 	private RhoTimeIncrementStrategy rho = RhoTimeIncrementStrategy.getInstance();
 	private DeltaTimeIncrementStrategy delta = DeltaTimeIncrementStrategy.getInstance();
+	private EpidemicStrategy epidemic = EpidemicStrategy.getInstance();
+	private PEC pec = PEC.getInstance();
 	
 	public CreateFactories() {
 		strategies = new ArrayList<>();
 		strategies.add(rho);
 		strategies.add(mu);
 		strategies.add(delta);
+		strategies.add(epidemic);
 		factories = new ArrayList<>();
 		factories.add(new PatrolAllocationFactory());
 		factories.add(new DiscreteStochasticSimulationFactory());
-		factories.add(new EvolutionaryProgrammingFactory(strategies, new IndividualSolution()));
+		factories.add(new EvolutionaryProgrammingFactory(strategies, new IndividualSolution(), pec));
 	}
 	
 	public void initializeComponents(String[] args) {

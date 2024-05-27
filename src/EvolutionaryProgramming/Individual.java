@@ -15,7 +15,6 @@ public class Individual {
 	}
 	
 	public void innitEvents(EventManager eventmanager) {
-		pop.addIndtoPop(this);	
 		new EventReproduction(this, eventmanager, EvolutionaryProgramming.strategiesMap.get("Reproduction"), solution);
 		new EventDeath(this, eventmanager, EvolutionaryProgramming.strategiesMap.get("Death"), solution);
 		new EventMutation(this, eventmanager, EvolutionaryProgramming.strategiesMap.get("Mutation"), solution);
@@ -28,10 +27,12 @@ public class Individual {
 	public void newIndividual() {
 		solution.generateRandomSolution();
 		fitting = solution.getFitting();
+		pop.addIndtoPop(this);	
 	}
 	
 	public void newChild(Solution parentSolution) {
 		solution.inheritSolution(parentSolution);
 		fitting = solution.getFitting();
+		pop.addIndtoPop(this);	
 	}
 }

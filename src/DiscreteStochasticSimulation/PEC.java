@@ -23,7 +23,7 @@ public class PEC implements EventManager {
 					return -1;
 			}
 	};
-	private PriorityQueue<IEv> pec = new PriorityQueue<>(com);
+	private PriorityQueue<IEv> pec = new PriorityQueue<>(com);  
 	
 	
 	Iterator<IEv> it = pec.iterator();
@@ -55,6 +55,15 @@ public class PEC implements EventManager {
 	@Override
 	public float getCurrSimTime() {
 		return simTime;
+	}
+	
+	public void iterateEvents() {
+		IEv ev;
+		while(it.hasNext()) {
+			ev = nextEvPEC();
+			ev.simulate(instance);
+			simTime += ev.getSimTime();
+		}
 	}
 }
 

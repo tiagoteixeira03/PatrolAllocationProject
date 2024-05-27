@@ -14,7 +14,7 @@ public abstract class Event {
 		eventmanager = eventmanager_;
 		solution = solution_;
 		timeincr = timeincr_;
-		simTime = timeincr.getRandomTime(ind.fitting);
+		simTime = eventmanager.getCurrSimTime() + timeincr.getRandomTime(ind.fitting);
 		eventmanager.scheduleEvent((IEv) this);
 	}
 	
