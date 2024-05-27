@@ -3,13 +3,22 @@ package DiscreteStochasticSimulation;
 import EvolutionaryProgramming.IEv;
 
 import java.util.Comparator;
+
 import java.util.Iterator;
+
 import java.util.PriorityQueue;
 
+/**
+ * The PEC (Pending Event Container) class represents a queue of pending events in a discrete stochastic simulation.
+ * It manages the scheduling and execution of events based on their simulation time.
+ */
 public class PEC implements EventManager {
+    /** The singleton instance of the PEC class. */
 	private static PEC instance;
-	private float simTime=0;
-	
+    /** The current simulation time. */
+    private float simTime = 0;	
+    
+    /** Comparator for sorting events by simulation time. */
 	Comparator<IEv> com = new Comparator<IEv>()
 	{
 			@Override
@@ -23,13 +32,21 @@ public class PEC implements EventManager {
 					return -1;
 			}
 	};
+	
+    /** The priority queue of events sorted by simulation time. */
 	private PriorityQueue<IEv> pec = new PriorityQueue<>(com);  
 	
-	
+    /** Iterator for traversing events in the PEC. */
 	Iterator<IEv> it = pec.iterator();
 	
+    /** Private constructor to prevent instantiation outside the class. */
 	private PEC() {}
 	
+	/**
+     * Retrieves the singleton instance of the PEC class.
+     * 
+     * @return the singleton instance of the PEC class
+     */
 	public static PEC getInstance() {
 		if(instance==null) {
 			instance = new PEC();
@@ -37,11 +54,21 @@ public class PEC implements EventManager {
 		return instance;	
 	}
 	
+	/**
+     * Schedules an event in the PEC.
+     * 
+     * @param ev the event to be scheduled
+     */
 	@Override
 	public void scheduleEvent(IEv ev) {
 		pec.add(ev);//We need to implement the verification to check if the add is valid
 	}
 	
+	/**
+     * Retrieves and removes the next event from the PEC.
+     * 
+     * @return the next event from the PEC
+     */
 	public IEv nextEvPEC() {
 		IEv nextEvent = null;
 		
@@ -52,11 +79,19 @@ public class PEC implements EventManager {
 		return nextEvent;
 	}
 
+	/**
+     * Gets the current simulation time.
+     * 
+     * @return the current simulation time
+     */
 	@Override
 	public float getCurrSimTime() {
 		return simTime;
 	}
 	
+	/**
+     * Iterates through the events in the PEC, simulating each event and updating the simulation time.
+     */
 	public void iterateEvents() {
 		IEv ev;
 		while(it.hasNext()) {
@@ -66,4 +101,3 @@ public class PEC implements EventManager {
 		}
 	}
 }
-

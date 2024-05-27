@@ -2,14 +2,27 @@ package DiscreteStochasticSimulation;
 
 import java.util.Random;
 
+/**
+ * Class that represents a time increment strategy based on the parameter rho.
+ * It calculates random time increments using the exponential distribution with a mean 
+ * determined by the comfort and rho.
+ */
 public class RhoTimeIncrementStrategy extends TimeIncrement{
+    /** The random number generator. */
 	Random random;
+    /** The singleton instance of the RhoTimeIncrementStrategy class. */
 	static RhoTimeIncrementStrategy instance=null;
 	
+    /** Private constructor to prevent instantiation outside the class. */
 	private RhoTimeIncrementStrategy() {
 		
 	}
 	
+	/**
+     * Retrieves the singleton instance of the RhoTimeIncrementStrategy class.
+     * 
+     * @return the singleton instance of the RhoTimeIncrementStrategy class
+     */
 	public static RhoTimeIncrementStrategy getInstance() {
 		if(instance == null) {
 			instance = new RhoTimeIncrementStrategy();
@@ -17,6 +30,13 @@ public class RhoTimeIncrementStrategy extends TimeIncrement{
 		return instance;
 	}
 
+	/**
+     * Generates a random time increment based on the comfort using the exponential 
+     * distribution with mean determined by the comfort and rho.
+     * 
+     * @param fitting the comfort value used to calculate the mean of the exponential distribution
+     * @return a random time increment
+     */
 	@Override
 	public double getRandomTime(double fitting) {
 		double m = getMean(fitting);
@@ -25,11 +45,13 @@ public class RhoTimeIncrementStrategy extends TimeIncrement{
 		
 	}
 	
+	/**
+     * Calculates the mean of the exponential distribution based on the comfort and rho parameters.
+     * 
+     * @param fitting the comfort value
+     * @return the mean of the exponential distribution
+     */
 	private double getMean(double fitting) {
 		return (1-Math.log(fitting))*DiscreteStochasticSimulation.rho;
 	}
-	
-	
-	
-	
 }
