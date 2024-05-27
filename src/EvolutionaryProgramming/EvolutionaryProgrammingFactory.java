@@ -3,11 +3,10 @@ package EvolutionaryProgramming;
 import java.util.List;
 
 import DiscreteStochasticSimulation.EventManager;
-
 import Main.ComponentFactory;
 
 /**
- * Factory class for creating and initializing the evolutionary programming components.
+ * Factory class to create and initialize the evolutionary programming components.
  * Sets up the initial population sizes and associates the appropriate time
  * increment strategies for the evolutionary programming process.
  */

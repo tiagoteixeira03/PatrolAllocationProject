@@ -10,12 +10,14 @@ public interface IEv {
 	/**
      * Abstract method that simulates an event.
      * 
-     * @param eventManager the event manager responsible for managing simulation events
+     * @param eventmanager the event manager responsible for managing simulation events
      */
 	public void simulate(EventManager eventmanager);
 	
 	/**
      * Abstract method that gets the simulation time.
+     * 
+     * @return the simulation time for the event
      */
 	public float getSimTime();
 }

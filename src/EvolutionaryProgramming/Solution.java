@@ -6,6 +6,8 @@ package EvolutionaryProgramming;
 public interface Solution {
 	/**
      * Gets the comfort value of the solution.
+     * 
+     * @return the comfort value of the solution
      */
 	public double getFitting();
 	
@@ -28,6 +30,8 @@ public interface Solution {
 	
 	/**
      * Gets the solution object.
+     * 
+     * @return the solution object
      */
 	public Solution getSolutionObject();
 }

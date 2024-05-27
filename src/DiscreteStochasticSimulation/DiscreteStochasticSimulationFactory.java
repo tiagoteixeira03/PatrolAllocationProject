@@ -3,7 +3,7 @@ package DiscreteStochasticSimulation;
 import Main.ComponentFactory;
 
 /**
- * Factory class for creating and initializing the discrete stochastic simulation components.
+ * Factory class to create and initialize the discrete stochastic simulation components.
  * Sets up parameters that are specific to the simulation.
  */
 public class DiscreteStochasticSimulationFactory implements ComponentFactory{

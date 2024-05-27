@@ -1,12 +1,11 @@
 package DiscreteStochasticSimulation;
 
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.PriorityQueue;
+
 import EvolutionaryProgramming.IEv;
 
-import java.util.Comparator;
-
-import java.util.Iterator;
-
-import java.util.PriorityQueue;
 
 /**
  * The PEC (Pending Event Container) class represents a queue of pending events in a discrete stochastic simulation.

@@ -2,7 +2,18 @@ package PatrolAllocation;
 
 import Main.ComponentFactory;
 
+/**
+ * Factory class to initialize the PatrolAllocation components.
+ * Implements the ComponentFactory interface to provide initialization logic for the patrol allocation problem.
+ */
 public class PatrolAllocationFactory implements ComponentFactory {
+	/**
+     * Initializes the PatrolAllocation component with the specified arguments.
+     * 
+     * @param args the arguments used to initialize the PatrolAllocation component. 
+     *             arg[0] the number of patrols, 
+     *             arg[1] the number of planet systems.
+     */
 	@Override
 	public void initialize(String[] args) {
 		int nrPatrols = Integer.parseInt(args[0]);

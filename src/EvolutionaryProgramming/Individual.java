@@ -19,7 +19,7 @@ public class Individual {
 	/**
      * Constructs a new Individual with the specified event manager and solution.
      * 
-     * @param eventManager_ the event manager responsible for managing simulation events
+     * @param eventmanager_ the event manager responsible for managing simulation events
      * @param solution_ the solution associated with the individual
      */
 	public Individual(EventManager eventmanager_, Solution solution_) {
@@ -31,7 +31,7 @@ public class Individual {
 	/**
      * Initializes the events associated with the individual.
      * 
-     * @param eventManager the event manager responsible for managing simulation events
+     * @param eventmanager the event manager responsible for managing simulation events
      */
 	public void innitEvents(EventManager eventmanager) {
 		new EventReproduction(this, eventmanager, EvolutionaryProgramming.strategiesMap.get("Reproduction"), solution);

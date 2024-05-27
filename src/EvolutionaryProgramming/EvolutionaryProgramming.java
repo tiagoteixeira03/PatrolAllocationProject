@@ -29,6 +29,7 @@ public class EvolutionaryProgramming {
      * @param initPopSize_ the initial population size
      * @param popMaxSize_ the maximum population size
      * @param solution_ ??
+     * @param eventmanager_ event manager responsible for scheduling and managing events
      */
 	public static void init(int initPopSize_, int popMaxSize_, Solution solution_, EventManager eventmanager_) {
 		initPopSize = initPopSize_;

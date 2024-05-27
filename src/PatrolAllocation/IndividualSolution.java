@@ -8,9 +8,18 @@ import java.util.Random;
 
 import EvolutionaryProgramming.Solution;
 
+/**
+ * Class that represents an individual solution for patrol allocation.
+ */
 public class IndividualSolution implements Solution {
+    /** The partition of patrols, where each patrol is a list of integers. */
 	List<List<Integer>> partition = new ArrayList<List<Integer>>(PatrolAllocation.nrPatrols);
 	
+	/**
+     * Calculates the comfort value of the solution.
+     * 
+     * @return the comfort value of the solution
+     */
 	public double getFitting() {
 	    double tz = 0, aux = 0;
 	    ListIterator<List<Integer>> iterPatrols = partition.listIterator();
@@ -26,6 +35,9 @@ public class IndividualSolution implements Solution {
 	    return PatrolAllocation.tmin / tz;
 	}
 	
+	/**
+     * Generates a random solution by randomly assigning planet systems to patrols.
+     */
 	public void generateRandomSolution() {
         // Step 1: Initialize each patrol list
         for (int i = 0; i < PatrolAllocation.nrPatrols; i++) {
@@ -49,7 +61,9 @@ public class IndividualSolution implements Solution {
         }
 	}
 	
-	
+	/**
+     * Mutates the solution by randomly moving an element from one patrol to another.
+     */
 	public void mutateSolution() {
         Random rand = new Random();
 
@@ -74,6 +88,12 @@ public class IndividualSolution implements Solution {
         partition.get(toPatrolIndex).add(removedValue);
 	}
 	
+	/**
+     * Inherits properties from a parent solution by copying the parent's partition and then 
+     * randomly adjusting it.
+     * 
+     * @param parentSolution the parent solution from which to inherit properties
+     */
 	public void inheritSolution(Solution parentSolution) {
         IndividualSolution parent = (IndividualSolution) parentSolution;
         
@@ -114,8 +134,12 @@ public class IndividualSolution implements Solution {
         }
 	}
 	
+	/**
+     * Gets a new instance of the IndividualSolution.
+     * 
+     * @return a new IndividualSolution object
+     */
 	public Solution getSolutionObject() {
 		return new IndividualSolution();
 	}
-	
 }
