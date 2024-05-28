@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class DeltaTimeIncrementStrategy extends TimeIncrement{
     /** The random number generator. */
-	Random random;
+	Random random = new Random();
     /** The singleton instance of the DeltaTimeIncrementStrategy class. */
 	static DeltaTimeIncrementStrategy instance=null;
 	

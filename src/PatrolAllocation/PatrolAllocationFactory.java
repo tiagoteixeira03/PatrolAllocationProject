@@ -1,5 +1,6 @@
 package PatrolAllocation;
 
+import EvolutionaryProgramming.InformationProvider;
 import Main.ComponentFactory;
 
 /**
@@ -7,6 +8,13 @@ import Main.ComponentFactory;
  * Implements the ComponentFactory interface to provide initialization logic for the patrol allocation problem.
  */
 public class PatrolAllocationFactory implements ComponentFactory {
+	
+	InformationProvider info;
+	
+	public PatrolAllocationFactory(InformationProvider info_) {
+		info = info_;
+	}
+	
 	/**
      * Initializes the PatrolAllocation component with the specified arguments.
      * 
@@ -19,6 +27,6 @@ public class PatrolAllocationFactory implements ComponentFactory {
 		int nrPatrols = Integer.parseInt(args[0]);
 		int nrPlanetSystems = Integer.parseInt(args[1]);
 		
-		PatrolAllocation.init(nrPatrols,nrPlanetSystems);
+		PatrolAllocation.init(nrPatrols,nrPlanetSystems, info);
 	}
 }

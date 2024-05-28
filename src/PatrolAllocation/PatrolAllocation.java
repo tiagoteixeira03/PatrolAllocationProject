@@ -2,13 +2,15 @@ package PatrolAllocation;
 
 import java.util.Random;
 
+import EvolutionaryProgramming.InformationProvider;
+
 /**
  * Class that handles the initialization and setup of the patrol allocation problem.
  * It initializes the number of patrols, number of planet systems, and the cost matrix.
  */
 public class PatrolAllocation {
     /** The random number generator. */
-	static Random random;
+	static Random random = new Random();
     /** The number of patrols. */
 	static int nrPatrols;
     /** The number of planet systems. */
@@ -17,6 +19,7 @@ public class PatrolAllocation {
 	static int[][] matrixC;
     /** The lower bound for the optimal time to patrol the empire. */
 	static double tmin;
+	static InformationProvider info;
 	
 	/**
      * Initializes the patrol allocation with the specified number of patrols and planet systems.
@@ -24,10 +27,11 @@ public class PatrolAllocation {
      * @param nrPatrols_ the number of patrols
      * @param nrPlanetSystems_ the number of planet systems
      */
-	public static void init(int nrPatrols_, int nrPlanetSystems_) {
+	public static void init(int nrPatrols_, int nrPlanetSystems_, InformationProvider info_) {
 		nrPatrols = nrPatrols_;
 		nrPlanetSystems = nrPlanetSystems_;
 		matrixC = new int[nrPatrols][nrPlanetSystems];
+		info = info_;
 		generateMatrix();
 	}
 	

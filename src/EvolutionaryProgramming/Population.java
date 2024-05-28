@@ -1,5 +1,6 @@
 package EvolutionaryProgramming;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.PriorityQueue;
@@ -17,6 +18,8 @@ public class Population {
 	int numIndivMax;
     /** The list of individuals in the population. */
 	TimeIncrementStrategy timeincr;
+	
+	int currentIndID=0, numEpidemics=0;
 	
     /** Comparator for sorting individuals in the population by comfort. */
 	Comparator<Individual> com = new Comparator<Individual>()
@@ -69,8 +72,9 @@ public class Population {
      */
 	public void addIndtoPop(Individual ind) {
 		pop.add(ind);
+		currentIndID++;
 		if(pop.size() >= numIndivMax) {
-			
+			startEpidemic();
 		}
 	}
 	
@@ -101,5 +105,15 @@ public class Population {
 				currentInd.killIndividual();
 			}
 		}
+		it = pop.iterator();
+		numEpidemics++;
+	}
+	
+	public ArrayList<Solution> getBestInds() {
+		ArrayList<Solution> bestInds = new ArrayList<>();
+		for(int i=0; i<6; i++) {
+			bestInds.add(it.next().solution);
+		}
+		return bestInds;
 	}
 }

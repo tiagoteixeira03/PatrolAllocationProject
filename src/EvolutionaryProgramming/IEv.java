@@ -19,5 +19,7 @@ public interface IEv {
      * 
      * @return the simulation time for the event
      */
-	public float getSimTime();
+	public double getSimTime();
+	
+	public int getIndID();
 }

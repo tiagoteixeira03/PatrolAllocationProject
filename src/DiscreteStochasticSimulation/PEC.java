@@ -15,14 +15,15 @@ public class PEC implements EventManager {
     /** The singleton instance of the PEC class. */
 	private static PEC instance;
     /** The current simulation time. */
-    private float simTime = 0;	
+    private double simTime = 0, printIntervals = DiscreteStochasticSimulation.simulationTime/20, nextPrint=printIntervals;
+    private int numofEventsSim=0;
     
     /** Comparator for sorting events by simulation time. */
 	Comparator<IEv> com = new Comparator<IEv>()
 	{
 			@Override
 			public int compare(IEv o1, IEv o2) {
-				float t1=o1.getSimTime(), t2=o2.getSimTime();
+				double t1=o1.getSimTime(), t2=o2.getSimTime();
 				if(t1>t2) 
 					return 1;
 				else if(t1==t2)
@@ -84,7 +85,7 @@ public class PEC implements EventManager {
      * @return the current simulation time
      */
 	@Override
-	public float getCurrSimTime() {
+	public double getCurrSimTime() {
 		return simTime;
 	}
 	
@@ -95,8 +96,25 @@ public class PEC implements EventManager {
 		IEv ev;
 		while(it.hasNext()) {
 			ev = nextEvPEC();
-			ev.simulate(instance);
 			simTime += ev.getSimTime();
+			if(simTime>=nextPrint) {
+				DiscreteStochasticSimulation.printResults.printCurrentResult(nextPrint, numofEventsSim);
+				nextPrint += nextPrint;
+			}
+			ev.simulate(instance);
+			numofEventsSim++;
 		}
 	}
+
+	@Override
+	public void removeIdEvents(int id) {
+		while(it.hasNext()) {
+			if(it.next().getIndID() == id) {
+				it.remove();
+			}
+		}
+		it = pec.iterator();
+	}
+	
+	
 }

@@ -13,10 +13,12 @@ public interface EventManager {
      */
 	public void scheduleEvent(IEv ev);
 	
+	public void removeIdEvents(int id);
+	
 	/**
      * Gets the current simulation time.
      * 
      * @return the current simulation time
      */
-	public float getCurrSimTime();
+	public double getCurrSimTime();
 }

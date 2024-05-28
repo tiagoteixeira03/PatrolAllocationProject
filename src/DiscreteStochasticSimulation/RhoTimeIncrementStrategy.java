@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class RhoTimeIncrementStrategy extends TimeIncrement{
     /** The random number generator. */
-	Random random;
+	Random random = new Random();
     /** The singleton instance of the RhoTimeIncrementStrategy class. */
 	static RhoTimeIncrementStrategy instance=null;
 	

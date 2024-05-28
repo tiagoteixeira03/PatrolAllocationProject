@@ -5,7 +5,7 @@ import DiscreteStochasticSimulation.EventManager;
 /**
  * Abstract class representing an event.
  */
-public abstract class Event {
+public abstract class Event implements IEv{
     /** The individual associated with this event. */
 	Individual ind;
     /** The simulation time when the event occurs. */
@@ -25,13 +25,11 @@ public abstract class Event {
      * @param timeincr_ the strategy used to increment the event's occurring simulation time
      * @param solution_ the solution associated with an individual
      */
-	public Event(Individual ind_, EventManager eventmanager_, TimeIncrementStrategy timeincr_, Solution solution_) {
+	public Event(Individual ind_, EventManager eventmanager_, Solution solution_, double simTime_) {
 		ind = ind_;
 		eventmanager = eventmanager_;
 		solution = solution_;
-		timeincr = timeincr_;
-		simTime = timeincr.getRandomTime(ind.fitting);
-		simTime = eventmanager.getCurrSimTime() + timeincr.getRandomTime(ind.fitting);
+		simTime = simTime_;
 		eventmanager.scheduleEvent((IEv) this);
 	}
 
@@ -49,5 +47,9 @@ public abstract class Event {
      */
 	public double getSimTime() {
 		return simTime;
+	}
+	
+	public int getIndID() {
+		return ind.id;
 	}
 }

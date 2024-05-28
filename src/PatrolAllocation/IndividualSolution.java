@@ -14,6 +14,7 @@ import EvolutionaryProgramming.Solution;
 public class IndividualSolution implements Solution {
     /** The partition of patrols, where each patrol is a list of integers. */
 	List<List<Integer>> partition = new ArrayList<List<Integer>>(PatrolAllocation.nrPatrols);
+	double time;
 	
 	/**
      * Calculates the comfort value of the solution.
@@ -32,6 +33,7 @@ public class IndividualSolution implements Solution {
 	            tz = aux;
 	        aux = 0;
 	    }
+	    time = tz;
 	    return PatrolAllocation.tmin / tz;
 	}
 	
@@ -141,5 +143,33 @@ public class IndividualSolution implements Solution {
      */
 	public Solution getSolutionObject() {
 		return new IndividualSolution();
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+        sb.append("{");
+
+        for (int i = 0; i < partition.size(); i++) {
+            List<Integer> innerList = partition.get(i);
+            sb.append("{");
+            for (int j = 0; j < innerList.size(); j++) {
+                sb.append(innerList.get(j));
+                if (j < innerList.size() - 1) {
+                    sb.append(",");
+                }
+            }
+            sb.append("}");
+            if (i < partition.size() - 1) {
+                sb.append(",");
+            }
+        }
+
+        sb.append("}");
+        return sb.toString();
+	}
+	
+	public double getTime() {
+		return time;
 	}
 }

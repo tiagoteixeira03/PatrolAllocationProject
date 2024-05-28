@@ -15,6 +15,8 @@ public class Individual {
 	Population pop = Population.getInstance();
     /** The solution associated with the individual. */
 	Solution solution;
+	double deathTime, repoTime, mutTime;
+	int id;
 	
 	/**
      * Constructs a new Individual with the specified event manager and solution.
@@ -25,6 +27,7 @@ public class Individual {
 	public Individual(EventManager eventmanager_, Solution solution_) {
 		eventmanager = eventmanager_;
 		solution = solution_;
+		id = pop.currentIndID + 1;
 		innitEvents(eventmanager);
 	}
 	
@@ -34,13 +37,24 @@ public class Individual {
      * @param eventmanager the event manager responsible for managing simulation events
      */
 	public void innitEvents(EventManager eventmanager) {
-		new EventReproduction(this, eventmanager, EvolutionaryProgramming.strategiesMap.get("Reproduction"), solution);
-		new EventDeath(this, eventmanager, EvolutionaryProgramming.strategiesMap.get("Death"), solution);
-		new EventMutation(this, eventmanager, EvolutionaryProgramming.strategiesMap.get("Mutation"), solution);
+		double currentTime = eventmanager.getCurrSimTime();
+		deathTime = currentTime + EvolutionaryProgramming.strategiesMap.get("Death").getRandomTime(fitting);
+		new EventDeath(this, eventmanager, solution, deathTime);
+		
+		repoTime = currentTime + EvolutionaryProgramming.strategiesMap.get("Reproduction").getRandomTime(fitting);
+		if(repoTime < deathTime) {
+			new EventReproduction(this, eventmanager, solution, repoTime);
+		}
+		
+		mutTime = currentTime + EvolutionaryProgramming.strategiesMap.get("Mutation").getRandomTime(fitting);
+		if(mutTime < deathTime) {
+			new EventMutation(this, eventmanager, solution, mutTime);
+		}
 	}
 	
     /** Removes the individual from the population. */
 	public void killIndividual() {
+		eventmanager.removeIdEvents(id);
 		pop.removeIndfromPop(this);
 	}
 	

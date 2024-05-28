@@ -34,4 +34,6 @@ public interface Solution {
      * @return the solution object
      */
 	public Solution getSolutionObject();
+	
+	public double getTime();
 }

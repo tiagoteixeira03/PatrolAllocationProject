@@ -22,8 +22,8 @@ public class EventDeath extends Event {
      * @param timestrat_ the strategy used to increment the event's occurring simulation time
      * @param solution_ the solution associated with an individual
      */
-    public EventDeath(Individual ind_, EventManager eventmanager_, TimeIncrementStrategy timestrat_, Solution solution_) {
-        super(ind_, eventmanager_, timestrat_, solution_);
+    public EventDeath(Individual ind_, EventManager eventmanager_, Solution solution_, double simTime) {
+        super(ind_, eventmanager_, solution_, simTime);
     }
 
     /**

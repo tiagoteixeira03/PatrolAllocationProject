@@ -26,6 +26,8 @@ public class CreateFactories {
 	private EpidemicStrategy epidemic = EpidemicStrategy.getInstance();
     /** Singleton instance of PEC (Priority Event Container). */
 	private PEC pec = PEC.getInstance();
+	private ResultsPrinter resultsPrinter = ResultsPrinter.getInstance();
+	private InformationProviderClass info = InformationProviderClass.getInstance();
 	
 	/**
      * Constructor that initializes the lists of strategies and factories.
@@ -37,8 +39,8 @@ public class CreateFactories {
 		strategies.add(delta);
 		strategies.add(epidemic);
 		factories = new ArrayList<>();
-		factories.add(new PatrolAllocationFactory());
-		factories.add(new DiscreteStochasticSimulationFactory());
+		factories.add(new PatrolAllocationFactory(info));
+		factories.add(new DiscreteStochasticSimulationFactory(resultsPrinter));
 		factories.add(new EvolutionaryProgrammingFactory(strategies, new IndividualSolution(), pec));
 	}
 	
@@ -51,5 +53,6 @@ public class CreateFactories {
 		for (ComponentFactory factory : factories) {
 			factory.initialize(args);
 		}
+		pec.iterateEvents();
 	}
 }

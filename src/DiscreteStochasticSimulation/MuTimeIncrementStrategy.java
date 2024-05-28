@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class MuTimeIncrementStrategy extends TimeIncrement{
     /** The random number generator. */
-	Random random;
+	Random random = new Random();
     /** The singleton instance of the MuTimeIncrementStrategy class. */
 	static MuTimeIncrementStrategy instance=null;
 	
