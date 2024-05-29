@@ -85,6 +85,7 @@ public class Population {
      */
 	public void removeIndfromPop(Individual ind) {
 		pop.remove(ind);
+		currentIndID--;
 	}
 	
 	/**
