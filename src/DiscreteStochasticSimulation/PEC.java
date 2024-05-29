@@ -95,13 +95,18 @@ public class PEC implements EventManager {
      */
 	public void iterateEvents() {
 		double nextPrint = DiscreteStochasticSimulation.simulationTime/20;
+		double currentTime=nextPrint;
 		IEv ev;
 		while(it.hasNext()) {
 			ev = nextEvPEC();
 			simTime += ev.getSimTime();
-			if(simTime>=nextPrint) {
-				DiscreteStochasticSimulation.printResults.printCurrentResult(nextPrint, numofEventsSim);
-				nextPrint += nextPrint;
+			if(simTime >= DiscreteStochasticSimulation.simulationTime) {
+				DiscreteStochasticSimulation.printResults.printCurrentResult(currentTime, numofEventsSim);
+				return;
+			}
+			if(simTime>=currentTime) {
+				DiscreteStochasticSimulation.printResults.printCurrentResult(currentTime, numofEventsSim);
+				currentTime += nextPrint;
 			}
 			ev.simulate(instance);
 			numofEventsSim++;

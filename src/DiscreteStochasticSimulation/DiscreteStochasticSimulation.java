@@ -25,7 +25,7 @@ public class DiscreteStochasticSimulation {
      * @param mu_ the value of the parameter mu
      * @param delta_ the value of the parameter delta
      */
-	public static void init(float simulationTime_, double rho_, double mu_, double delta_, PrintCurrentResults printResults_) {
+	public static void init(float simulationTime_, double mu_, double rho_, double delta_, PrintCurrentResults printResults_) {
 		simulationTime = simulationTime_;
 		rho = rho_;
 		mu = mu_;

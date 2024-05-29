@@ -11,7 +11,7 @@ public class ResultsPrinter implements PrintCurrentResults{
 	InformationProvider info = PatrolAllocationFactory.info;
 	private static ResultsPrinter instance;
 	double currInstant;
-	int numEvents, popSize, numEpidemics, obsNum=0;
+	int numEvents, popSize, numEpidemics, obsNum=1;
 	ArrayList<Solution> bestSols = new ArrayList<>();
 
 	private ResultsPrinter() {
@@ -37,23 +37,29 @@ public class ResultsPrinter implements PrintCurrentResults{
 		Iterator<Solution> it = bestSols.iterator();
 		String offset = "                         "; // 25 spaces for the offset
 		
-		System.out.println("Observation" + obsNum);
+		System.out.println("Observation" + " " + obsNum);
 		System.out.println(offset + "Present instant:" + currInstant);
 		System.out.println(offset + "Number of realized events:" + numEvents);
 		System.out.println(offset + "Population size:" + popSize);
 		System.out.println(offset + "Number of epidemics:" + numEpidemics);
-		sol = it.next();
-		System.out.println(offset + "Best distribution of the patrols:" + sol.toString());
-		System.out.println(offset + "Empire policing time:" + sol.getTime());
-		System.out.println(offset + "Comfort:" + sol.getFitting());
-		sol = it.next();
-		System.out.println(offset + "Other candidate distribution:" + sol.toString() + " : " + sol.getTime() + " : " + sol.getFitting());
-		for(int i=0; i<4; i++) {
+		if(it.hasNext()) {
+			sol = it.next();
+			System.out.println(offset + "Best distribution of the patrols:" + sol.toString());
+			System.out.println(offset + "Empire policing time:" + sol.getTime());
+			System.out.println(offset + "Comfort:" + sol.getFitting());
 			if(it.hasNext()) {
 				sol = it.next();
-				System.out.println(offset + sol.toString() + " : " + sol.getTime() + " : " + sol.getFitting());
+				System.out.println(offset + "Other candidate distribution:" + sol.toString() + " : " + sol.getTime() + " : " + sol.getFitting());
+				for(int i=0; i<4; i++) {
+					if(it.hasNext()) {
+						sol = it.next();
+						System.out.println(offset + sol.toString() + " : " + sol.getTime() + " : " + sol.getFitting());
+					}
+				}
 			}
 		}
+		obsNum++;
+		
 		
 	}
 
