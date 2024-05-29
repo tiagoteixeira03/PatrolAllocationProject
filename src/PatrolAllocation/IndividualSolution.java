@@ -27,7 +27,7 @@ public class IndividualSolution implements Solution {
 	    while (iterPatrols.hasNext()) {
 	        List<Integer> patrol = iterPatrols.next();
 	        for (Integer element : patrol) { 
-	            aux += PatrolAllocation.matrixC[partition.indexOf(patrol)][element];
+	            aux += PatrolAllocation.matrixC[partition.indexOf(patrol)][element-1];
 	        }
 	        if (aux > tz)
 	            tz = aux;

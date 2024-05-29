@@ -10,8 +10,6 @@ public abstract class Event implements IEv{
 	Individual ind;
     /** The simulation time when the event occurs. */
 	double simTime;
-    /** The event manager responsible for scheduling and managing events. */
-	EventManager eventmanager;
     /** Strategy used to increment the event's occurring simulation time. */
 	TimeIncrementStrategy timeincr;
     /** The solution associated with an individual. */
@@ -25,12 +23,11 @@ public abstract class Event implements IEv{
      * @param timeincr_ the strategy used to increment the event's occurring simulation time
      * @param solution_ the solution associated with an individual
      */
-	public Event(Individual ind_, EventManager eventmanager_, Solution solution_, double simTime_) {
+	public Event(Individual ind_, Solution solution_, double simTime_) {
 		ind = ind_;
-		eventmanager = eventmanager_;
 		solution = solution_;
 		simTime = simTime_;
-		eventmanager.scheduleEvent((IEv) this);
+		EvolutionaryProgramming.eventmanager.scheduleEvent((IEv) this);
 	}
 
 	/**

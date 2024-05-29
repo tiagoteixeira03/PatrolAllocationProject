@@ -28,7 +28,6 @@ public class Individual {
 		eventmanager = eventmanager_;
 		solution = solution_;
 		id = pop.currentIndID + 1;
-		innitEvents(eventmanager);
 	}
 	
 	/**
@@ -38,17 +37,17 @@ public class Individual {
      */
 	public void innitEvents(EventManager eventmanager) {
 		double currentTime = eventmanager.getCurrSimTime();
-		deathTime = currentTime + EvolutionaryProgramming.strategiesMap.get("Death").getRandomTime(fitting);
-		new EventDeath(this, eventmanager, solution, deathTime);
+		deathTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Death").getRandomTime(fitting);
+		new EventDeath(this, solution, deathTime);
 		
-		repoTime = currentTime + EvolutionaryProgramming.strategiesMap.get("Reproduction").getRandomTime(fitting);
+		repoTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Reproduction").getRandomTime(fitting);
 		if(repoTime < deathTime) {
-			new EventReproduction(this, eventmanager, solution, repoTime);
+			new EventReproduction(this, solution, repoTime);
 		}
 		
-		mutTime = currentTime + EvolutionaryProgramming.strategiesMap.get("Mutation").getRandomTime(fitting);
+		mutTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Mutation").getRandomTime(fitting);
 		if(mutTime < deathTime) {
-			new EventMutation(this, eventmanager, solution, mutTime);
+			new EventMutation(this, solution, mutTime);
 		}
 	}
 	
@@ -62,6 +61,7 @@ public class Individual {
 	public void newIndividual() {
 		solution.generateRandomSolution();
 		fitting = solution.getFitting();
+		innitEvents(eventmanager);
 		pop.addIndtoPop(this);	
 	}
 	
@@ -73,6 +73,7 @@ public class Individual {
 	public void newChild(Solution parentSolution) {
 		solution.inheritSolution(parentSolution);
 		fitting = solution.getFitting();
+		innitEvents(eventmanager);
 		pop.addIndtoPop(this);	
 	}
 }

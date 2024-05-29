@@ -29,6 +29,8 @@ public class DiscreteStochasticSimulationFactory implements ComponentFactory{
 		float simulationTime = Integer.parseInt(args[2]);
 		double mu = Double.parseDouble(args[5]),rho = Double.parseDouble(args[6]), delta = Double.parseDouble(args[7]);
         
+		new DiscreteStochasticSimulation();
+		
 		DiscreteStochasticSimulation.init(simulationTime, mu, rho, delta, printResults);
 	}
 }

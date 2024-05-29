@@ -8,7 +8,7 @@ import EvolutionaryProgramming.Solution;
 
 public class ResultsPrinter implements PrintCurrentResults{
 	
-	InformationProvider info = PatrolAllocation.info;
+	InformationProvider info = PatrolAllocationFactory.info;
 	private static ResultsPrinter instance;
 	double currInstant;
 	int numEvents, popSize, numEpidemics, obsNum=0;
@@ -29,9 +29,9 @@ public class ResultsPrinter implements PrintCurrentResults{
 	public void printCurrentResult(double currInstant_, int numEvents_) {
 		numEvents = numEvents_;
 		currInstant = currInstant_;
-		popSize = info.getPopSize();
-		numEpidemics = info.getNumEpidemics();
-		bestSols = info.getBestSols();
+		popSize = PatrolAllocation.info.getPopSize();
+		numEpidemics = PatrolAllocation.info.getNumEpidemics();
+		bestSols = PatrolAllocation.info.getBestSols();
 		Solution sol;
 		
 		Iterator<Solution> it = bestSols.iterator();
@@ -49,8 +49,10 @@ public class ResultsPrinter implements PrintCurrentResults{
 		sol = it.next();
 		System.out.println(offset + "Other candidate distribution:" + sol.toString() + " : " + sol.getTime() + " : " + sol.getFitting());
 		for(int i=0; i<4; i++) {
-			sol = it.next();
-			System.out.println(offset + sol.toString() + " : " + sol.getTime() + " : " + sol.getFitting());
+			if(it.hasNext()) {
+				sol = it.next();
+				System.out.println(offset + sol.toString() + " : " + sol.getTime() + " : " + sol.getFitting());
+			}
 		}
 		
 	}

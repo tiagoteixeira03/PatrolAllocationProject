@@ -9,8 +9,6 @@ import DiscreteStochasticSimulation.EventManager;
 public class EventReproduction extends Event {
     /** The individual associated with this event. */
 	Individual ind;
-    /** The event manager responsible for scheduling and managing events. */
-	EventManager eventmanager;
     /** Strategy used to increment the event's occurring simulation time. */
 	TimeIncrementStrategy timestrat;
     /** The new individual created as a result of the reproduction event. */
@@ -24,8 +22,8 @@ public class EventReproduction extends Event {
      * @param timestrat_ the strategy used to increment the event's occurring simulation time
      * @param solution_ the solution associated with an individual
      */
-	public EventReproduction(Individual ind_, EventManager eventmanager_, Solution solution_, double simTime) {
-		super(ind_, eventmanager_, solution_, simTime);
+	public EventReproduction(Individual ind_, Solution solution_, double simTime) {
+		super(ind_, solution_, simTime);
 	}
 	
 	/**

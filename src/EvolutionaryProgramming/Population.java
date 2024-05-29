@@ -13,9 +13,9 @@ public class Population {
     /** The singleton instance of the Population class. */
 	private static Population instance;
     /** The initial number of individuals in the population. */
-	int numIndvInit;
+	static int numIndvInit = EvolutionaryProgramming.initPopSize;
     /** The maximum number of individuals allowed in the population. */
-	int numIndivMax;
+	static int numIndivMax = EvolutionaryProgramming.popMaxSize;
     /** The list of individuals in the population. */
 	TimeIncrementStrategy timeincr;
 	
@@ -27,7 +27,7 @@ public class Population {
 			@Override
 			public int compare(Individual i1, Individual i2) {
 				double f1 = i1.fitting, f2 = i2.fitting;
-				if(f1>f2) 
+				if(f1<f2) 
 					return 1;
 				else if(f1==f2)
 					return 0;
@@ -48,9 +48,8 @@ public class Population {
      * @param numIndivInit_ the initial number of individuals in the population
      * @param numIndivMax_ the maximum number of individuals allowed in the population
      */
-	private Population(int numIndivInit_, int numIndivMax_) {
-		numIndvInit = numIndivInit_;
-		numIndivMax = numIndivMax_;	
+	private Population() {
+			
 	}
 	
 	/**
@@ -60,7 +59,7 @@ public class Population {
      */
 	public static Population getInstance() {
 		if(instance==null) {
-			instance = new Population(EvolutionaryProgramming.initPopSize, EvolutionaryProgramming.popMaxSize);
+			instance = new Population();
 		}
 		return instance;
 	}
@@ -73,7 +72,7 @@ public class Population {
 	public void addIndtoPop(Individual ind) {
 		pop.add(ind);
 		currentIndID++;
-		if(pop.size() >= numIndivMax) {
+		if(pop.size() >= EvolutionaryProgramming.popMaxSize) {
 			startEpidemic();
 		}
 	}
@@ -92,7 +91,7 @@ public class Population {
      */
 	public void startEpidemic() {
 		Individual currentInd;
-		timeincr = EvolutionaryProgramming.strategiesMap.get("Epidemic");
+		timeincr = EvolutionaryProgrammingFactory.strategiesMap.get("Epidemic");
 		for(int i=0; i<5; i++) {
 			it.next();
 		}
@@ -111,8 +110,11 @@ public class Population {
 	
 	public ArrayList<Solution> getBestInds() {
 		ArrayList<Solution> bestInds = new ArrayList<>();
+		it = pop.iterator();
 		for(int i=0; i<6; i++) {
-			bestInds.add(it.next().solution);
+			if(it.hasNext()) {
+				bestInds.add(it.next().solution);
+			}
 		}
 		return bestInds;
 	}

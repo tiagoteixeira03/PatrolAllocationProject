@@ -1,5 +1,6 @@
 package EvolutionaryProgramming;
 
+import java.util.HashMap;
 import java.util.List;
 
 import DiscreteStochasticSimulation.EventManager;
@@ -14,7 +15,7 @@ public class EvolutionaryProgrammingFactory implements ComponentFactory{
     /** List of time increment strategies used in the simulation. */
 	List<TimeIncrementStrategy> strategies;
     /** Instance of the EvolutionaryProgramming class. */
-	EvolutionaryProgramming ep = new EvolutionaryProgramming();
+	static HashMap<String, TimeIncrementStrategy> strategiesMap = new HashMap<>();
     /** ??. */
 	Solution solution;
     /** The event manager responsible for scheduling and managing events. */
@@ -42,15 +43,17 @@ public class EvolutionaryProgrammingFactory implements ComponentFactory{
      */
 	@Override
 	public void initialize(String[] args) {
-		int initPopSize = Integer.parseInt(args[3]);
-		int popMaxSize = Integer.parseInt(args[4]);
+		int initPopSize_ = Integer.parseInt(args[3]);
+		int popMaxSize_ = Integer.parseInt(args[4]);
 		
-		ep.setStrategy("Reproduction", strategies.get(0));
-		ep.setStrategy("Death", strategies.get(1));
-		ep.setStrategy("Mutation", strategies.get(2));
-		ep.setStrategy("Epidemic", strategies.get(3));
+		strategiesMap.put("Reproduction", strategies.get(0));
+		strategiesMap.put("Death", strategies.get(1));
+		strategiesMap.put("Mutation", strategies.get(2));
+		strategiesMap.put("Epidemic", strategies.get(3));
 		
-		EvolutionaryProgramming.init(initPopSize, popMaxSize, solution, eventmanager);
+		new EvolutionaryProgramming();
+		
+		EvolutionaryProgramming.init(initPopSize_, popMaxSize_, solution, eventmanager);
 		
 	}
 }

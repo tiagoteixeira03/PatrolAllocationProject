@@ -9,7 +9,7 @@ import Main.ComponentFactory;
  */
 public class PatrolAllocationFactory implements ComponentFactory {
 	
-	InformationProvider info;
+	static InformationProvider info;
 	
 	public PatrolAllocationFactory(InformationProvider info_) {
 		info = info_;
@@ -26,6 +26,8 @@ public class PatrolAllocationFactory implements ComponentFactory {
 	public void initialize(String[] args) {
 		int nrPatrols = Integer.parseInt(args[0]);
 		int nrPlanetSystems = Integer.parseInt(args[1]);
+		
+		new PatrolAllocation();
 		
 		PatrolAllocation.init(nrPatrols,nrPlanetSystems, info);
 	}

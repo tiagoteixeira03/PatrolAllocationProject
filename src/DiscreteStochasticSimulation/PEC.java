@@ -15,7 +15,7 @@ public class PEC implements EventManager {
     /** The singleton instance of the PEC class. */
 	private static PEC instance;
     /** The current simulation time. */
-    private double simTime = 0, printIntervals = DiscreteStochasticSimulation.simulationTime/20, nextPrint=printIntervals;
+    private double simTime = 0;
     private int numofEventsSim=0;
     
     /** Comparator for sorting events by simulation time. */
@@ -71,6 +71,7 @@ public class PEC implements EventManager {
      */
 	public IEv nextEvPEC() {
 		IEv nextEvent = null;
+		it = pec.iterator();
 		
 		if(it.hasNext()) {
 			nextEvent = it.next();
@@ -93,6 +94,7 @@ public class PEC implements EventManager {
      * Iterates through the events in the PEC, simulating each event and updating the simulation time.
      */
 	public void iterateEvents() {
+		double nextPrint = DiscreteStochasticSimulation.simulationTime/20;
 		IEv ev;
 		while(it.hasNext()) {
 			ev = nextEvPEC();

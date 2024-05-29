@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class InformationProviderClass implements InformationProvider{
 	
 	static InformationProviderClass instance;
+	Population pop = Population.getInstance();
 	
 	private InformationProviderClass() {
 		
@@ -16,8 +17,6 @@ public class InformationProviderClass implements InformationProvider{
 		}
 		return instance;
 	}
-	
-	Population pop = Population.getInstance();
 	
 	@Override
 	public int getPopSize() {

@@ -41,14 +41,4 @@ public class EvolutionaryProgramming {
 			ind.newIndividual();
 		}
 	}
-	
-	/**
-     * Sets the time increment strategy for a given strategy name.
-     *
-     * @param s the name of the strategy
-     * @param strategy the time increment strategy to be associated with the name
-     */
-	public void setStrategy(String s, TimeIncrementStrategy strategy) {
-		strategiesMap.put(s, strategy);
-	}
 }

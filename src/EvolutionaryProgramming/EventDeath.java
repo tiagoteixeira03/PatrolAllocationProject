@@ -7,12 +7,6 @@ import DiscreteStochasticSimulation.EventManager;
  * This event removes an individual from the population when it occurs.
  */
 public class EventDeath extends Event {
-    /** The individual associated with this event. */
-    Individual ind;
-    /** The event manager responsible for scheduling and managing events. */
-    EventManager eventmanager;
-    /** Strategy used to increment the event's occurring simulation time. */
-    TimeIncrementStrategy timestrat;
 
     /**
      * Constructs an EventDeath with the specified parameters.
@@ -22,8 +16,8 @@ public class EventDeath extends Event {
      * @param timestrat_ the strategy used to increment the event's occurring simulation time
      * @param solution_ the solution associated with an individual
      */
-    public EventDeath(Individual ind_, EventManager eventmanager_, Solution solution_, double simTime) {
-        super(ind_, eventmanager_, solution_, simTime);
+    public EventDeath(Individual ind_, Solution solution_, double simTime) {
+        super(ind_, solution_, simTime);
     }
 
     /**
