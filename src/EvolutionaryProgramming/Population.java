@@ -2,7 +2,6 @@ package EvolutionaryProgramming;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.PriorityQueue;
 
 /**
@@ -39,9 +38,6 @@ public class Population {
     /** The priority queue of individuals in the population, sorted by comfort. */
 	private PriorityQueue<Individual> pop = new PriorityQueue<Individual>(com);
 	
-	/** Iterator for traversing the population. */
-	Iterator<Individual> it = pop.iterator();
-	
 	/**
      * Constructs the Population class.
      * 
@@ -77,6 +73,11 @@ public class Population {
 		}
 	}
 	
+	public void updateIndPosition(Individual ind) {
+		pop.remove(ind);
+		pop.add(ind);
+	}
+	
 	/**
      * Removes an individual from the population.
      * 
@@ -92,29 +93,37 @@ public class Population {
 	public void startEpidemic() {
 		Individual currentInd;
 		timeincr = EvolutionaryProgrammingFactory.strategiesMap.get("Epidemic");
+		ArrayList<Individual> bestInds = new ArrayList<Individual>();
+		
 		for(int i=0; i<5; i++) {
-			it.next();
+			bestInds.add(pop.poll());
 		}
-		while(it.hasNext()) {
-			currentInd = it.next();
+		while(!pop.isEmpty()) {
+			currentInd = pop.poll();
 			if(timeincr.getRandomTime(currentInd.fitting) == 1){
+				pop.add(currentInd);
 				continue;
 			}
 			else {
-				currentInd.killIndividual();
+				currentInd.killIndividualEpidemic();
 			}
 		}
-		it = pop.iterator();
 		numEpidemics++;
 	}
 	
 	public ArrayList<Solution> getBestInds() {
-		ArrayList<Solution> bestInds = new ArrayList<>();
-		it = pop.iterator();
+		ArrayList<Solution> bestInds = new ArrayList<>(6);
+		ArrayList<Individual> inds = new ArrayList<>(6);
+		Individual ind;
 		for(int i=0; i<6; i++) {
-			if(it.hasNext()) {
-				bestInds.add(it.next().solution);
+			if(!pop.isEmpty()) {
+				ind = pop.poll();
+				inds.add(ind);
+				bestInds.add(ind.solution);
 			}
+		}
+		for(int i=0; i<6; i++) {
+			pop.add(inds.get(i));
 		}
 		return bestInds;
 	}

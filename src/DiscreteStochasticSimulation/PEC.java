@@ -34,7 +34,7 @@ public class PEC implements EventManager {
 	};
 	
     /** The priority queue of events sorted by simulation time. */
-	private PriorityQueue<IEv> pec = new PriorityQueue<>(com);  
+	private PriorityQueue<IEv> pec = new PriorityQueue<IEv>(com);  
 	
     /** Iterator for traversing events in the PEC. */
 	Iterator<IEv> it = pec.iterator();
@@ -71,11 +71,9 @@ public class PEC implements EventManager {
      */
 	public IEv nextEvPEC() {
 		IEv nextEvent = null;
-		it = pec.iterator();
 		
-		if(it.hasNext()) {
-			nextEvent = it.next();
-			it.remove();
+		if(!pec.isEmpty()) {
+			nextEvent = pec.remove();
 		}
 		return nextEvent;
 	}
@@ -97,7 +95,7 @@ public class PEC implements EventManager {
 		double nextPrint = DiscreteStochasticSimulation.simulationTime/20;
 		double currentTime=nextPrint;
 		IEv ev;
-		while(it.hasNext()) {
+		while(!pec.isEmpty()) {
 			ev = nextEvPEC();
 			simTime += ev.getSimTime();
 			if(simTime >= DiscreteStochasticSimulation.simulationTime) {

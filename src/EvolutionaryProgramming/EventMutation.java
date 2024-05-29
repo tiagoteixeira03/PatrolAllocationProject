@@ -7,6 +7,8 @@ import DiscreteStochasticSimulation.EventManager;
  * This event performs the mutation of an individual.
  */
 public class EventMutation extends Event {
+
+	Population pop = Population.getInstance();
 	
 	/**
      * Constructs an EventMutation with the specified parameters.
@@ -28,5 +30,7 @@ public class EventMutation extends Event {
      */
 	public void simulate(EventManager eventmanager) {
 		solution.mutateSolution();
+		ind.fitting = solution.getFitting();
+		pop.updateIndPosition(ind);
 	}
 }

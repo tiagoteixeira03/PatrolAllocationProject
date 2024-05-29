@@ -53,6 +53,10 @@ public class Individual {
 	
     /** Removes the individual from the population. */
 	public void killIndividual() {
+		pop.removeIndfromPop(this);
+	}
+	
+	public void killIndividualEpidemic() {
 		eventmanager.removeIdEvents(id);
 		pop.removeIndfromPop(this);
 	}
