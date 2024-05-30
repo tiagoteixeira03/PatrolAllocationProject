@@ -35,7 +35,7 @@ public class Individual {
      * 
      * @param eventmanager the event manager responsible for managing simulation events
      */
-	public void innitEvents(EventManager eventmanager) {
+	public void innitEvents() {
 		double currentTime = eventmanager.getCurrSimTime();
 		deathTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Death").getRandomTime(fitting);
 		new EventDeath(this, solution, deathTime);
@@ -65,7 +65,7 @@ public class Individual {
 	public void newIndividual() {
 		solution.generateRandomSolution();
 		fitting = solution.getFitting();
-		innitEvents(eventmanager);
+		innitEvents();
 		pop.addIndtoPop(this);	
 	}
 	
@@ -77,7 +77,23 @@ public class Individual {
 	public void newChild(Solution parentSolution) {
 		solution.inheritSolution(parentSolution);
 		fitting = solution.getFitting();
-		innitEvents(eventmanager);
-		pop.addIndtoPop(this);	
+		innitEvents();
+		pop.addIndtoPop(this);
+	}
+	
+	public void scheduleNextReproduction() {
+		double currentTime = eventmanager.getCurrSimTime();
+		repoTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Reproduction").getRandomTime(fitting);
+		if(repoTime < deathTime) {
+			new EventReproduction(this, solution, repoTime);
+		}
+	}
+	
+	public void scheduleNextMutation() {
+		double currentTime = eventmanager.getCurrSimTime();
+		mutTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Mutation").getRandomTime(fitting);
+		if(mutTime < deathTime) {
+			new EventMutation(this, solution, mutTime);
+		}
 	}
 }

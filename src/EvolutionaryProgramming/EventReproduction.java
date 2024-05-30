@@ -8,7 +8,7 @@ import DiscreteStochasticSimulation.EventManager;
  */
 public class EventReproduction extends Event {
     /** The individual associated with this event. */
-	Individual ind;
+//	Individual ind;
     /** Strategy used to increment the event's occurring simulation time. */
 	TimeIncrementStrategy timestrat;
     /** The new individual created as a result of the reproduction event. */
@@ -35,5 +35,6 @@ public class EventReproduction extends Event {
 	public void simulate(EventManager eventmanager) {
 		child = new Individual(eventmanager, solution.getSolutionObject());
 		child.newChild(solution);
+		ind.scheduleNextReproduction();
 	}
 }

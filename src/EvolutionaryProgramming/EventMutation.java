@@ -32,5 +32,6 @@ public class EventMutation extends Event {
 		solution.mutateSolution();
 		ind.fitting = solution.getFitting();
 		pop.updateIndPosition(ind);
+		ind.scheduleNextMutation();
 	}
 }

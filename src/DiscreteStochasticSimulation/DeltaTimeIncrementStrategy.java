@@ -41,7 +41,9 @@ public class DeltaTimeIncrementStrategy extends TimeIncrement{
 	public double getRandomTime(double fitting) {
 		double m = getMean(fitting);
 		double next = random.nextDouble();
-		return -m*Math.log(1.0-next);
+		double observation = -m*Math.log(1.0-next);
+//		System.out.println("Next Mutation in: " + observation);
+		return observation;
 		
 	}
 	
