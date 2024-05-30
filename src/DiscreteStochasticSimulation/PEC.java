@@ -104,6 +104,9 @@ public class PEC implements EventManager {
 
 	        if (simTime >= DiscreteStochasticSimulation.simulationTime) {
 	            DiscreteStochasticSimulation.printResults.printCurrentResult(currentTime, numofEventsSim);
+	            for(IEv event : pec) {
+	            	System.out.println(event.getSimTime());          
+	            }
 	            return;
 	        }
 

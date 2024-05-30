@@ -2,6 +2,8 @@ package EvolutionaryProgramming;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 import java.util.PriorityQueue;
 
 /**
@@ -17,6 +19,8 @@ public class Population {
 	static int numIndivMax = EvolutionaryProgramming.popMaxSize;
     /** The list of individuals in the population. */
 	TimeIncrementStrategy timeincr;
+	
+	Individual bestInd;
 	
 	int currentIndID=0, numEpidemics=0;
 	
@@ -68,6 +72,12 @@ public class Population {
 	public void addIndtoPop(Individual ind) {
 		pop.add(ind);
 		currentIndID++;
+		if(bestInd == null) {
+			bestInd = ind;
+		}
+		if(ind.fitting > bestInd.fitting) {
+			bestInd = ind;
+		}
 		if(pop.size() >= EvolutionaryProgramming.popMaxSize) {
 			startEpidemic();
 		}
@@ -94,7 +104,8 @@ public class Population {
 	public void startEpidemic() {
 		Individual currentInd;
 		timeincr = EvolutionaryProgrammingFactory.strategiesMap.get("Epidemic");
-		ArrayList<Individual> bestInds = new ArrayList<Individual>();
+		ArrayList<Individual> bestInds = new ArrayList<Individual>(5);
+		List<Individual> survivingInds = new ArrayList<Individual>(EvolutionaryProgramming.popMaxSize);
 		
 		for(int i=0; i<5; i++) {
 			bestInds.add(pop.poll());
@@ -102,7 +113,7 @@ public class Population {
 		while(!pop.isEmpty()) {
 			currentInd = pop.poll();
 			if(timeincr.getRandomTime(currentInd.fitting) == 1){
-				pop.add(currentInd);
+				survivingInds.add(currentInd);
 				continue;
 			}
 			else {
@@ -110,6 +121,15 @@ public class Population {
 			}
 		}
 		numEpidemics++;
+		Iterator<Individual> it = survivingInds.iterator();
+		
+		while(it.hasNext()) {
+			pop.add(it.next());
+		}
+		
+		for(int i=0; i<5; i++) {
+			pop.add(bestInds.get(i));
+		}
 	}
 	
 	public ArrayList<Solution> getBestInds() {
@@ -118,7 +138,8 @@ public class Population {
 	    Individual ind;
 
 	    // Poll individuals from pop and add to inds list
-	    for(int i = 0; i < 6; i++) {
+	    bestInds.add(bestInd.solution);
+	    for(int i = 0; i < 5; i++) {
 	        if(!pop.isEmpty()) {
 	            ind = pop.poll();
 	            inds.add(ind);

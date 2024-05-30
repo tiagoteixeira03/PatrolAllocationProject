@@ -37,7 +37,7 @@ public class EpidemicStrategy extends TimeIncrement{
 	@Override
 	public double getRandomTime(double fitting) {
 		double next = random.nextDouble();
-		double probability = (2/3)*fitting;
+		double probability = (2.0/3)*fitting;
 		if(next<=probability) {
 			return 1; //Individual lives
 		}
