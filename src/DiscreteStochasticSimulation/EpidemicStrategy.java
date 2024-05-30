@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class EpidemicStrategy extends TimeIncrement{
     /** The random number generator. */
-	Random random;
+	Random random = new Random();
     /** The singleton instance of the EpidemicStrategy class. */
 	static EpidemicStrategy instance=null;
 	

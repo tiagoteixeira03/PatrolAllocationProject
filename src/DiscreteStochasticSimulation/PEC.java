@@ -1,7 +1,9 @@
 package DiscreteStochasticSimulation;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.PriorityQueue;
 
 import EvolutionaryProgramming.IEv;
@@ -92,33 +94,44 @@ public class PEC implements EventManager {
      * Iterates through the events in the PEC, simulating each event and updating the simulation time.
      */
 	public void iterateEvents() {
-		double nextPrint = DiscreteStochasticSimulation.simulationTime/20;
-		double currentTime=nextPrint;
-		IEv ev;
-		while(!pec.isEmpty()) {
-			ev = nextEvPEC();
-			simTime += ev.getSimTime();
-			if(simTime >= DiscreteStochasticSimulation.simulationTime) {
-				DiscreteStochasticSimulation.printResults.printCurrentResult(currentTime, numofEventsSim);
-				return;
-			}
-			if(simTime>=currentTime) {
-				DiscreteStochasticSimulation.printResults.printCurrentResult(currentTime, numofEventsSim);
-				currentTime += nextPrint;
-			}
-			ev.simulate(instance);
-			numofEventsSim++;
-		}
+	    double nextPrint = DiscreteStochasticSimulation.simulationTime / 20;
+	    double currentTime = nextPrint;
+	    IEv ev;
+
+	    while (!pec.isEmpty()) {
+	        ev = nextEvPEC();
+	        simTime = ev.getSimTime(); // Update simTime to the event's simulation time
+
+	        if (simTime >= DiscreteStochasticSimulation.simulationTime) {
+	            DiscreteStochasticSimulation.printResults.printCurrentResult(currentTime, numofEventsSim);
+	            return;
+	        }
+
+	        if (simTime >= currentTime) {
+	            DiscreteStochasticSimulation.printResults.printCurrentResult(currentTime, numofEventsSim);
+	            currentTime += nextPrint;
+	        }
+
+	        ev.simulate(instance);
+	        numofEventsSim++;
+	    }
 	}
+
 
 	@Override
 	public void removeIdEvents(int id) {
-		while(it.hasNext()) {
-			if(it.next().getIndID() == id) {
-				it.remove();
-			}
-		}
-		it = pec.iterator();
+	    // Create a list to store events that need to be removed
+	    List<IEv> eventsToRemove = new ArrayList<>();
+	    
+	    // Iterate through the priority queue to find events to remove
+	    for (IEv event : pec) {
+	        if (event.getIndID() == id) {
+	            eventsToRemove.add(event);
+	        }
+	    }
+	    
+	    // Remove the events after the iteration
+	    pec.removeAll(eventsToRemove);
 	}
 	
 	

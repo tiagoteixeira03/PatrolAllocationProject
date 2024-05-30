@@ -113,19 +113,27 @@ public class Population {
 	}
 	
 	public ArrayList<Solution> getBestInds() {
-		ArrayList<Solution> bestInds = new ArrayList<>(6);
-		ArrayList<Individual> inds = new ArrayList<>(6);
-		Individual ind;
-		for(int i=0; i<6; i++) {
-			if(!pop.isEmpty()) {
-				ind = pop.poll();
-				inds.add(ind);
-				bestInds.add(ind.solution);
-			}
-		}
-		for(int i=0; i<6; i++) {
-			pop.add(inds.get(i));
-		}
-		return bestInds;
+	    ArrayList<Solution> bestInds = new ArrayList<>(6);
+	    ArrayList<Individual> inds = new ArrayList<>(6);
+	    Individual ind;
+
+	    // Poll individuals from pop and add to inds list
+	    for(int i = 0; i < 6; i++) {
+	        if(!pop.isEmpty()) {
+	            ind = pop.poll();
+	            inds.add(ind);
+	            bestInds.add(ind.solution);
+	        } else {
+	            break; // Exit loop if pop is empty
+	        }
+	    }
+
+	    // Reinsert polled individuals back into pop
+	    for(int i = 0; i < inds.size(); i++) {
+	        pop.add(inds.get(i));
+	    }
+
+	    return bestInds;
 	}
+
 }
