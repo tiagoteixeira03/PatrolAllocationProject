@@ -42,9 +42,9 @@ public class EvolutionaryProgrammingFactory implements ComponentFactory{
      *             args[5]: maximum population size
      */
 	@Override
-	public void initialize(String[] args) {
-		int initPopSize_ = Integer.parseInt(args[3]);
-		int popMaxSize_ = Integer.parseInt(args[4]);
+	public void initialize(String[] EPargs) {
+		int initPopSize_ = Integer.parseInt(EPargs[0]);
+		int popMaxSize_ = Integer.parseInt(EPargs[1]);
 		
 		strategiesMap.put("Reproduction", strategies.get(0));
 		strategiesMap.put("Death", strategies.get(1));

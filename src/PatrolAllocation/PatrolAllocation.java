@@ -27,19 +27,25 @@ public class PatrolAllocation {
      * @param nrPatrols_ the number of patrols
      * @param nrPlanetSystems_ the number of planet systems
      */
-	public static void init(int nrPatrols_, int nrPlanetSystems_, InformationProvider info_) {
+	public static void init(int nrPatrols_, int nrPlanetSystems_, String stringMatrixC, InformationProvider info_) {
 		nrPatrols = nrPatrols_;
 		nrPlanetSystems = nrPlanetSystems_;
 		matrixC = new int[nrPatrols][nrPlanetSystems];
+		if(stringMatrixC.equals("RANDOM_MATRIX")) {
+			generateRandomMatrix();
+		}
+		else {
+			generateUserMatrix(stringMatrixC);
+		}
+		
 		info = info_;
-		generateMatrix();
 	}
 	
 	/**
      * Generates the cost matrix with random values and calculates the lower bound for the 
      * optimal time to patrol the empire.
      */
-	private static void generateMatrix() {
+	private static void generateRandomMatrix() {
 		int minLine=11;
 		
 		for(int i=0; i<nrPatrols; i++) {
@@ -52,5 +58,16 @@ public class PatrolAllocation {
 			minLine=11;
 		}
 		tmin = tmin/nrPatrols;
+	}
+	
+	private static void generateUserMatrix(String stringMatrixC) {
+		String[] arrayMatrixC = stringMatrixC.split("-");
+		int aux = 0;
+		for(int i=0; i<nrPatrols; i++) {
+			for(int j=0; j<nrPlanetSystems; j++) {
+				matrixC[i][j] = Integer.parseInt(arrayMatrixC[aux]);
+				aux++;
+			}
+		}
 	}
 }

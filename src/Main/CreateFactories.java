@@ -50,9 +50,21 @@ public class CreateFactories {
      * @param args the arguments used to initialize the components
      */
 	public void initializeComponents(String[] args) {
-		for (ComponentFactory factory : factories) {
-			factory.initialize(args);
-		}
-		pec.iterateEvents();
+	    // Extract arguments for PatrolAllocationFactory
+	    String[] patrolAllocationArgs = { args[0], args[1], args[8] }; // Adjust indices based on actual needs
+
+	    // Extract arguments for DiscreteStochasticSimulationFactory
+	    String[] discreteStochasticArgs = { args[2], args[5], args[6], args[7] }; // Adjust indices based on actual needs
+
+	    // Extract arguments for EvolutionaryProgrammingFactory
+	    String[] evolutionaryProgrammingArgs = { args[3], args[4]}; // Adjust indices based on actual needs
+
+	    // Initialize each factory with their specific arguments
+	    factories.get(0).initialize(patrolAllocationArgs);
+	    factories.get(1).initialize(discreteStochasticArgs);
+	    factories.get(2).initialize(evolutionaryProgrammingArgs);
+
+	    // Iterate events
+	    pec.iterateEvents();
 	}
 }

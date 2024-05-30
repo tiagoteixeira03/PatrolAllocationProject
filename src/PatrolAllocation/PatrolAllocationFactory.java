@@ -23,12 +23,13 @@ public class PatrolAllocationFactory implements ComponentFactory {
      *             arg[1] the number of planet systems.
      */
 	@Override
-	public void initialize(String[] args) {
-		int nrPatrols = Integer.parseInt(args[0]);
-		int nrPlanetSystems = Integer.parseInt(args[1]);
+	public void initialize(String[] PAargs) {
+		int nrPatrols = Integer.parseInt(PAargs[0]);
+		int nrPlanetSystems = Integer.parseInt(PAargs[1]);
+		String stringMatrixC = PAargs[2];
 		
 		new PatrolAllocation();
 		
-		PatrolAllocation.init(nrPatrols,nrPlanetSystems, info);
+		PatrolAllocation.init(nrPatrols,nrPlanetSystems, stringMatrixC, info);
 	}
 }

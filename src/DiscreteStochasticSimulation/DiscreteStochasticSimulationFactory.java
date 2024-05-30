@@ -25,9 +25,9 @@ public class DiscreteStochasticSimulationFactory implements ComponentFactory{
      *             args[7]: delta (parameter for the simulation)
      */
 	@Override
-	public void initialize(String[] args) {
-		float simulationTime = Integer.parseInt(args[2]);
-		double mu = Double.parseDouble(args[5]),rho = Double.parseDouble(args[6]), delta = Double.parseDouble(args[7]);
+	public void initialize(String[] DSSargs) {
+		float simulationTime = Integer.parseInt(DSSargs[0]);
+		double mu = Double.parseDouble(DSSargs[1]),rho = Double.parseDouble(DSSargs[2]), delta = Double.parseDouble(DSSargs[3]);
         
 		new DiscreteStochasticSimulation();
 		
