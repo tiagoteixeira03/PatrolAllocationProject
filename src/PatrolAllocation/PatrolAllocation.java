@@ -61,13 +61,19 @@ public class PatrolAllocation {
 	}
 	
 	private static void generateUserMatrix(String stringMatrixC) {
+		int minLine=11;
 		String[] arrayMatrixC = stringMatrixC.split("-");
 		int aux = 0;
 		for(int i=0; i<nrPatrols; i++) {
 			for(int j=0; j<nrPlanetSystems; j++) {
 				matrixC[i][j] = Integer.parseInt(arrayMatrixC[aux]);
+				if(matrixC[i][j] < minLine)
+					minLine = matrixC[i][j];
 				aux++;
 			}
+			tmin +=minLine;
+			minLine=11;
 		}
+		tmin = tmin/nrPatrols;
 	}
 }
