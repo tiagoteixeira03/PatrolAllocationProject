@@ -40,4 +40,6 @@ public interface Solution {
 	public double getTime();
 	
 	public IndividualSolution cloneObject();
+	
+	public boolean isSolEqual(Solution sol2);
 }

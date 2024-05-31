@@ -51,7 +51,7 @@ public class PatrolAllocation {
 		
 		for(int i=0; i<nrPatrols; i++) {
 			for(int j=0; j<nrPlanetSystems; j++) {
-				matrixC[i][j] = random.nextInt(10) + 1;					
+				matrixC[i][j] = random.nextInt(4) + 1;					
 			}
 		}
 		
@@ -59,7 +59,7 @@ public class PatrolAllocation {
             for (int j = 0; j < matrixC[i].length; j++) {
                 System.out.print(matrixC[i][j] + " ");
             }
-            System.out.println(); // Move to the next line after printing each row
+            System.out.println();
         }
 		
 		for(int j=0; j<nrPlanetSystems; j++) {

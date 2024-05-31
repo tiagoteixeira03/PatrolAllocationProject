@@ -188,4 +188,27 @@ public class IndividualSolution implements Solution {
 		return sol;
 		
 	}
+	
+	public boolean isSolEqual(Solution sol2) { 
+		
+		IndividualSolution indSol2 = (IndividualSolution)sol2;
+		
+		for (int i = 0; i < partition.size(); i++) {
+            List<Integer> list1 = partition.get(i);
+            List<Integer> list2 = indSol2.partition.get(i);
+            // Check if both inner lists are null
+            if (list1 == null && list2 == null) {
+                continue;
+            }
+            // Check if one of the inner lists is null
+            if (list1 == null || list2 == null) {
+                return false;
+            }
+            // Check if the inner lists are equal
+            if (!list1.equals(list2)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

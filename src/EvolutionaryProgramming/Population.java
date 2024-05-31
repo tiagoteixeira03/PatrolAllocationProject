@@ -137,6 +137,7 @@ public class Population {
 	    ArrayList<Solution> bestInds = new ArrayList<>(6);
 	    ArrayList<Individual> inds = new ArrayList<>();
 	    Individual ind;
+	    Boolean isSolValid=true;
 
 	    // Poll individuals from pop and add to inds list
 	    bestInds.add(bestSol);
@@ -148,7 +149,19 @@ public class Population {
 	            	i--;
 	            	continue;
 	            }
-	            bestInds.add(ind.solution);
+	            for(Solution bestSol : bestInds) {
+	            	if(ind.solution.isSolEqual(bestSol)) {
+	            		isSolValid = false;
+	            	}
+	            }
+	            if(isSolValid) {
+	            	bestInds.add(ind.solution);
+	            }
+	            else {
+	            	i--;
+	            	continue;
+	            }
+	            
 	        } else {
 	            break; // Exit loop if pop is empty
 	        }
