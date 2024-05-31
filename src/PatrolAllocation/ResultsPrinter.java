@@ -13,6 +13,7 @@ public class ResultsPrinter implements PrintCurrentResults{
 	double currInstant;
 	int numEvents, popSize, numEpidemics, obsNum=1;
 	ArrayList<Solution> bestSols = new ArrayList<>();
+	double bestFitting;
 
 	private ResultsPrinter() {
 		
@@ -59,8 +60,6 @@ public class ResultsPrinter implements PrintCurrentResults{
 			}
 		}
 		obsNum++;
-		
-		
 	}
 
 }

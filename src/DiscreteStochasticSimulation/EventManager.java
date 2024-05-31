@@ -21,4 +21,6 @@ public interface EventManager {
      * @return the current simulation time
      */
 	public double getCurrSimTime();
+	
+	public int getNumEvents();
 }

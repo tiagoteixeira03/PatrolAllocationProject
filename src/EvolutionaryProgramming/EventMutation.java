@@ -31,6 +31,11 @@ public class EventMutation extends Event {
 	public void simulate(EventManager eventmanager) {
 		solution.mutateSolution();
 		ind.fitting = solution.getFitting();
+		if(ind.fitting > pop.bestFitting) {
+			pop.bestSol = ind.solution.cloneObject();
+			pop.bestFitting = pop.bestSol.getFitting();
+			pop.bestID = ind.id;
+		}
 		pop.updateIndPosition(ind);
 		ind.scheduleNextMutation();
 	}

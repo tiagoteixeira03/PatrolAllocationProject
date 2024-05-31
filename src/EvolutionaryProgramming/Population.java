@@ -20,7 +20,9 @@ public class Population {
     /** The list of individuals in the population. */
 	TimeIncrementStrategy timeincr;
 	
-	Individual bestInd;
+	double bestFitting=0;
+	Solution bestSol;
+	int bestID;
 	
 	int currentIndID=0, numEpidemics=0;
 	
@@ -72,11 +74,10 @@ public class Population {
 	public void addIndtoPop(Individual ind) {
 		pop.add(ind);
 		currentIndID++;
-		if(bestInd == null) {
-			bestInd = ind;
-		}
-		if(ind.fitting > bestInd.fitting) {
-			bestInd = ind;
+		if(ind.fitting > bestFitting) {
+			bestSol = ind.solution.cloneObject();
+			bestFitting = bestSol.getFitting();
+			bestID = ind.id;
 		}
 		if(pop.size() >= EvolutionaryProgramming.popMaxSize) {
 			startEpidemic();
@@ -134,15 +135,19 @@ public class Population {
 	
 	public ArrayList<Solution> getBestInds() {
 	    ArrayList<Solution> bestInds = new ArrayList<>(6);
-	    ArrayList<Individual> inds = new ArrayList<>(6);
+	    ArrayList<Individual> inds = new ArrayList<>();
 	    Individual ind;
 
 	    // Poll individuals from pop and add to inds list
-	    bestInds.add(bestInd.solution);
+	    bestInds.add(bestSol);
 	    for(int i = 0; i < 5; i++) {
 	        if(!pop.isEmpty()) {
 	            ind = pop.poll();
 	            inds.add(ind);
+	            if(ind.id == bestID) {
+	            	i--;
+	            	continue;
+	            }
 	            bestInds.add(ind.solution);
 	        } else {
 	            break; // Exit loop if pop is empty

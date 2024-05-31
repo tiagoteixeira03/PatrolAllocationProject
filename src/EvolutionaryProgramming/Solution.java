@@ -1,5 +1,7 @@
 package EvolutionaryProgramming;
 
+import PatrolAllocation.IndividualSolution;
+
 /**
  * Interface that represents a solution.
  */
@@ -36,4 +38,6 @@ public interface Solution {
 	public Solution getSolutionObject();
 	
 	public double getTime();
+	
+	public IndividualSolution cloneObject();
 }

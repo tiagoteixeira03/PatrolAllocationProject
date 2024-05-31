@@ -46,34 +46,57 @@ public class PatrolAllocation {
      * optimal time to patrol the empire.
      */
 	private static void generateRandomMatrix() {
-		int minLine=11;
+		int aux=0, min=11;
+		double sum=0;
 		
 		for(int i=0; i<nrPatrols; i++) {
 			for(int j=0; j<nrPlanetSystems; j++) {
-				matrixC[i][j] = random.nextInt(10) + 1;
-				if(matrixC[i][j] < minLine)
-					minLine = matrixC[i][j];					
+				matrixC[i][j] = random.nextInt(10) + 1;					
 			}
-			tmin +=minLine;
-			minLine=11;
 		}
-		tmin = tmin/nrPatrols;
+		
+		for (int i = 0; i < matrixC.length; i++) {
+            for (int j = 0; j < matrixC[i].length; j++) {
+                System.out.print(matrixC[i][j] + " ");
+            }
+            System.out.println(); // Move to the next line after printing each row
+        }
+		
+		for(int j=0; j<nrPlanetSystems; j++) {
+			for(int i=0; i<nrPatrols; i++) {
+				aux = matrixC[i][j];
+				if(min > aux) {
+					min = aux;
+				}
+			}
+			sum += min;
+			min = 11;
+		}
+		tmin = sum/nrPatrols;
 	}
 	
 	private static void generateUserMatrix(String stringMatrixC) {
-		int minLine=11;
+		int min=11;
+		double sum=0;
 		String[] arrayMatrixC = stringMatrixC.split("-");
 		int aux = 0;
 		for(int i=0; i<nrPatrols; i++) {
 			for(int j=0; j<nrPlanetSystems; j++) {
 				matrixC[i][j] = Integer.parseInt(arrayMatrixC[aux]);
-				if(matrixC[i][j] < minLine)
-					minLine = matrixC[i][j];
 				aux++;
 			}
-			tmin +=minLine;
-			minLine=11;
 		}
-		tmin = tmin/nrPatrols;
+		
+		for(int j=0; j<nrPlanetSystems; j++) {
+			for(int i=0; i<nrPatrols; i++) {
+				aux = matrixC[i][j];
+				if(min > aux) {
+					min = aux;
+				}
+			}
+			sum += min;
+			min = 11;
+		}
+		tmin = sum/nrPatrols;
 	}
 }

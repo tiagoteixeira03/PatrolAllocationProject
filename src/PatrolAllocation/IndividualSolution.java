@@ -172,4 +172,20 @@ public class IndividualSolution implements Solution {
 	public double getTime() {
 		return time;
 	}
+	
+	public IndividualSolution cloneObject() {
+		IndividualSolution sol;
+		List<List<Integer>> copyPartition = new ArrayList<List<Integer>>(PatrolAllocation.nrPatrols);
+		
+		for (List<Integer> copy : partition) {
+            List<Integer> newList = new ArrayList<>(copy);  // Create a new list with the same elements
+            copyPartition.add(newList);
+        }
+		
+		sol = new IndividualSolution();
+		sol.partition = copyPartition;
+		
+		return sol;
+		
+	}
 }
