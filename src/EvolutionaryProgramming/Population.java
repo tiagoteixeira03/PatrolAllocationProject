@@ -17,8 +17,6 @@ public class Population {
 	static int numIndvInit = EvolutionaryProgramming.initPopSize;
     /** The maximum number of individuals allowed in the population. */
 	static int numIndivMax = EvolutionaryProgramming.popMaxSize;
-    /** The list of individuals in the population. */
-	TimeIncrementStrategy timeincr;
 	
 	double bestFitting=0;
 	Solution bestSol;
@@ -104,7 +102,7 @@ public class Population {
      */
 	public void startEpidemic() {
 		Individual currentInd;
-		timeincr = EvolutionaryProgrammingFactory.strategiesMap.get("Epidemic");
+		TimeIncrementStrategy timeincr = EvolutionaryProgrammingFactory.strategiesMap.get("Epidemic");
 		ArrayList<Individual> bestInds = new ArrayList<Individual>(5);
 		List<Individual> survivingInds = new ArrayList<Individual>(EvolutionaryProgramming.popMaxSize);
 		

@@ -55,13 +55,6 @@ public class PatrolAllocation {
 			}
 		}
 		
-		for (int i = 0; i < matrixC.length; i++) {
-            for (int j = 0; j < matrixC[i].length; j++) {
-                System.out.print(matrixC[i][j] + " ");
-            }
-            System.out.println();
-        }
-		
 		for(int j=0; j<nrPlanetSystems; j++) {
 			for(int i=0; i<nrPatrols; i++) {
 				aux = matrixC[i][j];
