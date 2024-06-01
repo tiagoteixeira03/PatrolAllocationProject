@@ -1,0 +1,260 @@
+Observation 1:
+               Present instant:                    12.5
+               Number of realized events:          17
+               Population size:                    8
+               Number of epidemics:                0
+               Best distribution of the patrols:   {{1},{},{4},{6},{3,7},{2},{5}}
+               Empire policing time:               10.0
+               Comfort:                            0.14285714285714285
+               Other candidate distribution:       {{6},{4},{3},{1},{},{5},{7,2}} : 10.0 : 0.14285714285714285
+                                                   {{6},{7,2},{},{},{1},{5},{4,3}} : 10.0 : 0.14285714285714285
+                                                   {{},{},{},{7},{3,6,5},{2},{1,4}} : 18.0 : 0.07936507936507936
+                                                   {{6},{3,4,7,2},{1},{},{},{},{5}} : 21.0 : 0.06802721088435375
+                                                   {{6,3,5},{},{1},{7},{2},{4},{}} : 22.0 : 0.06493506493506494
+Observation 2:
+               Present instant:                    25.0
+               Number of realized events:          406
+               Population size:                    183
+               Number of epidemics:                0
+               Best distribution of the patrols:   {{},{6,3},{4},{},{},{7},{5,2,1}}
+               Empire policing time:               8.0
+               Comfort:                            0.17857142857142858
+               Other candidate distribution:       {{5},{7},{6},{},{3},{1},{2,4}} : 8.0 : 0.17857142857142858
+                                                   {{},{7},{1,5},{3},{2},{},{4,6}} : 8.0 : 0.17857142857142858
+                                                   {{7},{2},{4,6},{3},{},{5},{1}} : 9.0 : 0.15873015873015872
+                                                   {{},{2,3,1},{6,5},{4},{},{},{7}} : 9.0 : 0.15873015873015872
+                                                   {{2},{7},{4},{6,1},{5},{3},{}} : 9.0 : 0.15873015873015872
+Observation 3:
+               Present instant:                    37.5
+               Number of realized events:          866
+               Population size:                    30
+               Number of epidemics:                2
+               Best distribution of the patrols:   {{3},{},{1,6},{5},{7},{},{4,2}}
+               Empire policing time:               7.0
+               Comfort:                            0.20408163265306123
+               Other candidate distribution:       {{},{5},{2},{3},{7,6},{},{1,4}} : 8.0 : 0.17857142857142858
+                                                   {{6},{},{7},{},{5},{2,1,3},{4}} : 9.0 : 0.15873015873015872
+                                                   {{7},{3},{},{6},{5},{},{2,4,1}} : 9.0 : 0.15873015873015872
+                                                   {{},{2,3},{},{5},{7,1,4},{6},{}} : 9.0 : 0.15873015873015872
+                                                   {{3,4},{5,6},{2},{1},{7},{},{}} : 10.0 : 0.14285714285714285
+Observation 4:
+               Present instant:                    50.0
+               Number of realized events:          1394
+               Population size:                    82
+               Number of epidemics:                3
+               Best distribution of the patrols:   {{3},{},{1,6},{5},{7},{},{4,2}}
+               Empire policing time:               7.0
+               Comfort:                            0.20408163265306123
+               Other candidate distribution:       {{5},{2,1,6},{},{},{7},{3,4},{}} : 7.0 : 0.20408163265306123
+                                                   {{},{2,6},{4,1},{},{7,3},{},{5}} : 8.0 : 0.17857142857142858
+                                                   {{},{3,1},{5,2,4},{},{},{7},{6}} : 8.0 : 0.17857142857142858
+                                                   {{},{},{1,6},{2},{5},{4,3},{7}} : 9.0 : 0.15873015873015872
+                                                   {{},{7},{1,6},{5},{3,4},{2},{}} : 9.0 : 0.15873015873015872
+Observation 5:
+               Present instant:                    62.5
+               Number of realized events:          2012
+               Population size:                    20
+               Number of epidemics:                5
+               Best distribution of the patrols:   {{5},{3},{1},{},{7},{},{2,6,4}}
+               Empire policing time:               6.0
+               Comfort:                            0.2380952380952381
+               Other candidate distribution:       {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{5},{2,1,6},{},{},{7},{3,4},{}} : 7.0 : 0.20408163265306123
+                                                   {{3},{2},{1},{5},{7},{6},{4}} : 7.0 : 0.20408163265306123
+                                                   {{},{3,2},{1,4},{},{6,7},{},{5}} : 8.0 : 0.17857142857142858
+                                                   {{},{4},{},{5,1},{7,2},{3},{6}} : 9.0 : 0.15873015873015872
+Observation 6:
+               Present instant:                    75.0
+               Number of realized events:          2475
+               Population size:                    35
+               Number of epidemics:                6
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{5},{2,1,6},{},{},{7},{3,4},{}} : 7.0 : 0.20408163265306123
+                                                   {{3},{2},{1},{5},{7},{6},{4}} : 7.0 : 0.20408163265306123
+                                                   {{},{3,1},{},{},{4,6,7},{},{5,2}} : 7.0 : 0.20408163265306123
+                                                   {{3},{},{6,1,2},{5},{7,4},{},{}} : 8.0 : 0.17857142857142858
+Observation 7:
+               Present instant:                    87.5
+               Number of realized events:          2936
+               Population size:                    51
+               Number of epidemics:                7
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{},{},{6,7},{},{5,2,1,4}} : 7.0 : 0.20408163265306123
+                                                   {{5},{2,1,6},{},{},{7},{3,4},{}} : 7.0 : 0.20408163265306123
+                                                   {{3},{2},{1},{5},{7},{6},{4}} : 7.0 : 0.20408163265306123
+Observation 8:
+               Present instant:                    100.0
+               Number of realized events:          3615
+               Population size:                    22
+               Number of epidemics:                9
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{},{},{1,5},{},{7},{3,6},{2,4}} : 7.0 : 0.20408163265306123
+                                                   {{3},{},{6,5},{1},{7},{2},{4}} : 7.0 : 0.20408163265306123
+                                                   {{5},{2,1,6},{},{},{7},{3,4},{}} : 7.0 : 0.20408163265306123
+Observation 9:
+               Present instant:                    112.5
+               Number of realized events:          4021
+               Population size:                    44
+               Number of epidemics:                10
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{3},{},{6,5},{1},{7},{2},{4}} : 7.0 : 0.20408163265306123
+                                                   {{5},{2,1,6},{},{},{7},{3,4},{}} : 7.0 : 0.20408163265306123
+                                                   {{},{3},{5,2},{},{7,4,6},{1},{}} : 7.0 : 0.20408163265306123
+Observation 10:
+               Present instant:                    125.0
+               Number of realized events:          4485
+               Population size:                    89
+               Number of epidemics:                11
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{2,6},{},{7,1},{4},{5}} : 6.0 : 0.2380952380952381
+                                                   {{3},{},{6,5},{1},{7},{2},{4}} : 7.0 : 0.20408163265306123
+                                                   {{4},{2,3},{1},{5,6},{7},{},{}} : 7.0 : 0.20408163265306123
+Observation 11:
+               Present instant:                    137.5
+               Number of realized events:          5102
+               Population size:                    189
+               Number of epidemics:                12
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{3},{},{6,5},{1},{7},{2},{4}} : 7.0 : 0.20408163265306123
+                                                   {{5},{2,1,6},{},{},{7},{3,4},{}} : 7.0 : 0.20408163265306123
+                                                   {{},{6},{},{3},{7,4},{},{5,2,1}} : 8.0 : 0.17857142857142858
+Observation 12:
+               Present instant:                    150.0
+               Number of realized events:          5536
+               Population size:                    31
+               Number of epidemics:                14
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{5},{2,1,6},{},{},{7},{3,4},{}} : 7.0 : 0.20408163265306123
+                                                   {{3},{5},{1},{6},{4,7},{},{2}} : 7.0 : 0.20408163265306123
+                                                   {{3},{},{6,5},{1},{7},{2},{4}} : 7.0 : 0.20408163265306123
+Observation 13:
+               Present instant:                    162.5
+               Number of realized events:          6074
+               Population size:                    121
+               Number of epidemics:                15
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{5},{1,3},{6},{},{7},{2},{4}} : 6.0 : 0.2380952380952381
+                                                   {{3},{6,5,2},{4},{1},{7},{},{}} : 7.0 : 0.20408163265306123
+                                                   {{},{3},{4,5},{},{7},{6},{1,2}} : 7.0 : 0.20408163265306123
+Observation 14:
+               Present instant:                    175.0
+               Number of realized events:          6593
+               Population size:                    35
+               Number of epidemics:                17
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{5},{1,3},{6},{},{7},{2},{4}} : 6.0 : 0.2380952380952381
+                                                   {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{3},{},{5,4},{},{6,2},{7},{1}} : 8.0 : 0.17857142857142858
+                                                   {{5},{3,6,2,1},{4},{},{7},{},{}} : 8.0 : 0.17857142857142858
+Observation 15:
+               Present instant:                    187.5
+               Number of realized events:          7020
+               Population size:                    63
+               Number of epidemics:                18
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{5},{1,3},{6},{},{7},{2},{4}} : 6.0 : 0.2380952380952381
+                                                   {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{5},{6,1},{},{3},{7,4},{2},{}} : 8.0 : 0.17857142857142858
+                                                   {{},{5},{6},{2},{4,7,1},{3},{}} : 9.0 : 0.15873015873015872
+Observation 16:
+               Present instant:                    200.0
+               Number of realized events:          7704
+               Population size:                    43
+               Number of epidemics:                20
+               Best distribution of the patrols:   {{},{2,6},{},{1},{7},{3},{5,4}}
+               Empire policing time:               5.0
+               Comfort:                            0.2857142857142857
+               Other candidate distribution:       {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{5},{1,3},{6},{},{7},{2},{4}} : 6.0 : 0.2380952380952381
+                                                   {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{},{3,2},{1},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{},{1,2,6},{},{},{7},{3},{4,5}} : 6.0 : 0.2380952380952381
+Observation 17:
+               Present instant:                    212.5
+               Number of realized events:          8176
+               Population size:                    75
+               Number of epidemics:                21
+               Best distribution of the patrols:   {{},{3,6},{},{},{4,7},{1},{5,2}}
+               Empire policing time:               4.0
+               Comfort:                            0.35714285714285715
+               Other candidate distribution:       {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{5},{1,3},{6},{},{7},{2},{4}} : 6.0 : 0.2380952380952381
+                                                   {{},{3,2},{1},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{5},{2},{},{},{7,3},{1},{4,6}} : 7.0 : 0.20408163265306123
+Observation 18:
+               Present instant:                    225.0
+               Number of realized events:          8674
+               Population size:                    129
+               Number of epidemics:                22
+               Best distribution of the patrols:   {{},{3,6},{},{},{4,7},{1},{5,2}}
+               Empire policing time:               4.0
+               Comfort:                            0.35714285714285715
+               Other candidate distribution:       {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{5},{1,3},{6},{},{7},{2},{4}} : 6.0 : 0.2380952380952381
+                                                   {{},{3,2},{1},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{3},{5},{6},{1},{7,2},{},{4}} : 7.0 : 0.20408163265306123
+Observation 19:
+               Present instant:                    237.5
+               Number of realized events:          9152
+               Population size:                    169
+               Number of epidemics:                23
+               Best distribution of the patrols:   {{},{6,3},{},{5},{7},{1},{4,2}}
+               Empire policing time:               3.0
+               Comfort:                            0.4761904761904762
+               Other candidate distribution:       {{},{3,6},{},{},{4,7},{1},{5,2}} : 4.0 : 0.35714285714285715
+                                                   {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{},{3,5},{1},{},{7},{},{4,6,2}} : 6.0 : 0.2380952380952381
+                                                   {{5},{1,3},{6},{},{7},{2},{4}} : 6.0 : 0.2380952380952381
+                                                   {{},{6,3},{},{5},{2,7},{1},{4}} : 6.0 : 0.2380952380952381
+Observation 20:
+               Present instant:                    250.0
+               Number of realized events:          9677
+               Population size:                    81
+               Number of epidemics:                25
+               Best distribution of the patrols:   {{},{6,3},{},{5},{7},{1},{4,2}}
+               Empire policing time:               3.0
+               Comfort:                            0.4761904761904762
+               Other candidate distribution:       {{},{3,6},{},{},{4,7},{1},{5,2}} : 4.0 : 0.35714285714285715
+                                                   {{5},{1,3},{6},{},{7},{2},{4}} : 6.0 : 0.2380952380952381
+                                                   {{5},{},{},{1},{7},{3},{4,2,6}} : 6.0 : 0.2380952380952381
+                                                   {{},{3},{1,2},{5},{7,4},{6},{}} : 6.0 : 0.2380952380952381
+                                                   {{},{},{4,2},{},{1,7},{3},{5,6}} : 6.0 : 0.2380952380952381
