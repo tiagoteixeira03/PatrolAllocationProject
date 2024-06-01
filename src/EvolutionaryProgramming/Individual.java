@@ -7,20 +7,28 @@ import DiscreteStochasticSimulation.EventManager;
  * It contains methods for initializing events, managing individual properties, and interacting with the population.
  */
 public class Individual {
+
     /** The comfort value of the individual. */
 	double fitting;
+    
     /** The event manager responsible for managing simulation events. */
 	EventManager eventmanager;
+    
     /** The population instance. */
 	Population pop = Population.getInstance();
+    
     /** The solution associated with the individual. */
 	Solution solution;
+	
 	/** The simulation time when the individual dies. */
     double deathTime;
+    
     /** The simulation time when the individual reproduces. */
     double repoTime;
+    
     /** The simulation time when the individual mutates. */
     double mutTime;
+    
     /** The unique identifier of the individual. */
     int id;
 	
@@ -41,14 +49,18 @@ public class Individual {
      */
 	public void innitEvents() {
 		double currentTime = eventmanager.getCurrSimTime();
+		
+        // Calculate death time and create a new EventDeath
 		deathTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Death").getRandomTime(fitting);
 		new EventDeath(this, solution, deathTime);
 		
+        // Calculate reproduction time and create a new EventReproduction if it's earlier than death time
 		repoTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Reproduction").getRandomTime(fitting);
 		if(repoTime < deathTime) {
 			new EventReproduction(this, solution, repoTime);
 		}
 		
+        // Calculate mutation time and create a new EventMutation if it's earlier than death time
 		mutTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Mutation").getRandomTime(fitting);
 		if(mutTime < deathTime) {
 			new EventMutation(this, solution, mutTime);

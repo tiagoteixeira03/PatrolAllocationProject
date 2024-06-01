@@ -11,13 +11,17 @@ import Main.ComponentFactory;
  * Sets up the initial population sizes and associates the appropriate time
  * increment strategies for the evolutionary programming process.
  */
-public class EvolutionaryProgrammingFactory implements ComponentFactory{
+public class EvolutionaryProgrammingFactory implements ComponentFactory {
+
     /** List of time increment strategies used in the simulation. */
 	List<TimeIncrementStrategy> strategies;
+    
     /** Instance of the EvolutionaryProgramming class. */
 	static HashMap<String, TimeIncrementStrategy> strategiesMap = new HashMap<>();
+    
     /** A solution for a problem. */
 	Solution solution;
+    
     /** The event manager responsible for scheduling and managing events. */
 	EventManager eventmanager;
 	
@@ -41,16 +45,20 @@ public class EvolutionaryProgrammingFactory implements ComponentFactory{
      */
 	@Override
 	public void initialize(String[] EPargs) {
+		// Extract parameters from command-line/input file arguments
 		int initPopSize_ = Integer.parseInt(EPargs[0]);
 		int popMaxSize_ = Integer.parseInt(EPargs[1]);
 		
+		// Associate time increment strategies with their respective names
 		strategiesMap.put("Reproduction", strategies.get(0));
 		strategiesMap.put("Death", strategies.get(1));
 		strategiesMap.put("Mutation", strategies.get(2));
 		strategiesMap.put("Epidemic", strategies.get(3));
 		
+		// Create an object of the EvolutionaryProgramming class
 		new EvolutionaryProgramming();
 		
+		// Initialize EvolutionaryProgramming object with the provided parameters
 		EvolutionaryProgramming.init(initPopSize_, popMaxSize_, solution, eventmanager);
 	}
 }

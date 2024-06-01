@@ -112,9 +112,9 @@ public class Population {
 		List<Individual> survivingInds = new ArrayList<Individual>(EvolutionaryProgramming.popMaxSize);
 		
 		for(int i=0; i<5; i++) {
-			bestInds.add(pop.poll());
+			bestInds.add(pop.poll()); // First we remove the 5 best individuals
 		}
-		while(!pop.isEmpty()) {
+		while(!pop.isEmpty()) { // For the rest of the individuals in the population we check if they die or not
 			currentInd = pop.poll();
 			if(timeincr.getRandomTime(currentInd.fitting) == 1){
 				survivingInds.add(currentInd);
@@ -127,57 +127,73 @@ public class Population {
 		numEpidemics++;
 		Iterator<Individual> it = survivingInds.iterator();
 		
-		while(it.hasNext()) {
+		while(it.hasNext()) { // We add the individuals that survived the epidemic back to the population
 			pop.add(it.next());
 		}
 		
-		for(int i=0; i<5; i++) {
+		for(int i=0; i<5; i++) { // We add the 5 best individuals back to the population
 			pop.add(bestInds.get(i));
 		}
 	}
 	
 	/**
-     * Gets the best solutions.
-     *
-     * @return An ArrayList containing the best solutions.
-     */
+	 * Retrieves the best solutions from the population.
+	 * This method selects the solutions with the highest fitness values, ensuring diversity by avoiding duplicate solutions.
+	 *
+	 * @return An ArrayList containing the best solutions.
+	 */
 	public ArrayList<Solution> getBestInds() {
+	    // Initialize ArrayList to store best solutions
 	    ArrayList<Solution> bestInds = new ArrayList<>(6);
+	    // Temporary ArrayList to store individuals
 	    ArrayList<Individual> inds = new ArrayList<>();
 	    Individual ind;
+	    // Boolean to track if a solution is valid (i.e., not duplicate)
 	    Boolean isSolValid=true;
 
+	    // Add the best solution ever found to the list of best solutions
 	    bestInds.add(bestSol);
+	    
+	    // Retrieve the 5 best living individuals with different solutions
 	    for(int i = 0; i < 5; i++) {
 	        if(!pop.isEmpty()) {
+	            // Retrieve and remove the best individual from the population
 	            ind = pop.poll();
+	            // Add the individual to the temporary list
 	            inds.add(ind);
+	            // Skip if the individual is the same as the best individual ever found
 	            if(ind.id == bestID) {
 	            	i--;
 	            	continue;
 	            }
+	            // Check if the individual's solution is different from previously selected best solutions
 	            isSolValid=true;
 	            for(Solution bestSol : bestInds) {
 	            	if(ind.solution.isSolEqual(bestSol)) {
 	            		isSolValid = false;
 	            	}
 	            }
+	            // If the solution is different, add it to the list of best solutions
 	            if(isSolValid) {
 	            	bestInds.add(ind.solution);
 	            }
+	            // If the solution is a duplicate, skip and decrement loop counter
 	            else {
 	            	i--;
 	            	continue;
 	            }
-	            
 	        } else {
 	            break;
 	        }
 	    }
 
+	    // Add back the individuals removed from the population
 	    for(int i = 0; i < inds.size(); i++) {
 	        pop.add(inds.get(i));
 	    }
+	    
+	    // Return the list of best solutions
 	    return bestInds;
 	}
+
 }
