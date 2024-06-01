@@ -156,6 +156,7 @@ public class Population {
 	            	i--;
 	            	continue;
 	            }
+	            isSolValid=true;
 	            for(Solution bestSol : bestInds) {
 	            	if(ind.solution.isSolEqual(bestSol)) {
 	            		isSolValid = false;
