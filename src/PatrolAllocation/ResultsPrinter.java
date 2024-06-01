@@ -60,7 +60,7 @@ public class ResultsPrinter implements PrintCurrentResults {
         popSize = PatrolAllocation.info.getPopSize();
         numEpidemics = PatrolAllocation.info.getNumEpidemics();
         bestSols = PatrolAllocation.info.getBestSols();
-        Solution sol;
+        Solution sol, bestSol;
 
         Iterator<Solution> it = bestSols.iterator();
 
@@ -75,10 +75,10 @@ public class ResultsPrinter implements PrintCurrentResults {
         System.out.printf(dataFormat, "Number of epidemics:", numEpidemics);
 
         if (it.hasNext()) {
-            sol = it.next();
-            System.out.printf(dataFormat, "Best distribution of the patrols:", sol.toString());
-            System.out.printf(dataFormat, "Empire policing time:", sol.getTime());
-            System.out.printf(dataFormat, "Comfort:", sol.getFitting());
+            bestSol = it.next();
+            System.out.printf(dataFormat, "Best distribution of the patrols:", bestSol.toString());
+            System.out.printf(dataFormat, "Empire policing time:", bestSol.getTime());
+            System.out.printf(dataFormat, "Comfort:", bestSol.getFitting());
             if (it.hasNext()) {
                 sol = it.next();
                 System.out.printf(candidateFormat, "Other candidate distribution:", sol.toString(), sol.getTime(), sol.getFitting());
@@ -88,6 +88,9 @@ public class ResultsPrinter implements PrintCurrentResults {
                         System.out.printf(candidateFormat, "", sol.toString(), sol.getTime(), sol.getFitting());
                     }
                 }
+            }
+            if(popSize == 0 || bestSol.getFitting() == 1.0) {
+            	System.exit(0);
             }
         }
         obsNum++;
