@@ -8,9 +8,14 @@ import Main.ComponentFactory;
  * Implements the ComponentFactory interface to provide initialization logic for the patrol allocation problem.
  */
 public class PatrolAllocationFactory implements ComponentFactory {
-	
+    /** The information provider for the simulation. */
 	static InformationProvider info;
 	
+	/**
+     * Constructs a PatrolAllocationFactory with the specified information provider.
+     * 
+     * @param info_ The information provider for the simulation.
+     */
 	public PatrolAllocationFactory(InformationProvider info_) {
 		info = info_;
 	}
@@ -18,9 +23,7 @@ public class PatrolAllocationFactory implements ComponentFactory {
 	/**
      * Initializes the PatrolAllocation component with the specified arguments.
      * 
-     * @param args the arguments used to initialize the PatrolAllocation component. 
-     *             arg[0] the number of patrols, 
-     *             arg[1] the number of planet systems.
+     * @param PAargs The command-line arguments containing simulation parameters.
      */
 	@Override
 	public void initialize(String[] PAargs) {

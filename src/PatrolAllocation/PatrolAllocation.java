@@ -19,13 +19,16 @@ public class PatrolAllocation {
 	static int[][] matrixC;
     /** The lower bound for the optimal time to patrol the empire. */
 	static double tmin;
+    /** The information provider. */
 	static InformationProvider info;
 	
 	/**
      * Initializes the patrol allocation with the specified number of patrols and planet systems.
      * 
-     * @param nrPatrols_ the number of patrols
-     * @param nrPlanetSystems_ the number of planet systems
+     * @param nrPatrols_ The number of patrols.
+     * @param nrPlanetSystems_ The number of planet systems.
+     * @param stringMatrixC A string representation of the cost matrix.
+     * @param info_ The information provider for the simulation.
      */
 	public static void init(int nrPatrols_, int nrPlanetSystems_, String stringMatrixC, InformationProvider info_) {
 		nrPatrols = nrPatrols_;
@@ -37,7 +40,6 @@ public class PatrolAllocation {
 		else {
 			generateUserMatrix(stringMatrixC);
 		}
-		
 		info = info_;
 	}
 	
@@ -68,6 +70,12 @@ public class PatrolAllocation {
 		tmin = sum/nrPatrols;
 	}
 	
+	/**
+     * Generates the cost matrix from the provided string representation and calculates the lower bound for the 
+     * optimal time to patrol the empire.
+     * 
+     * @param stringMatrixC A string representation of the cost matrix.
+     */
 	private static void generateUserMatrix(String stringMatrixC) {
 		int min=11;
 		double sum=0;

@@ -1,11 +1,14 @@
 package Main;
 import java.io.IOException;
 
+/**
+ * The main class that starts the simulation.
+ */
 public class Main {
     /**
      * The main method that starts the simulation.
      * 
-     * @param args the command-line arguments provided to the program
+     * @param args The command-line arguments provided to the program.
      */
     public static void main(String[] args) {
         try {

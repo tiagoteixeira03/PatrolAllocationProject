@@ -19,7 +19,7 @@ public class EpidemicStrategy extends TimeIncrement{
 	/**
      * Retrieves the singleton instance of the EpidemicStrategy class.
      * 
-     * @return the singleton instance of the EpidemicStrategy class
+     * @return The singleton instance of the EpidemicStrategy class.
      */
 	public static EpidemicStrategy getInstance() {
 		if(instance == null) {
@@ -31,19 +31,18 @@ public class EpidemicStrategy extends TimeIncrement{
 	/**
      * Generates a random time increment for an epidemic event based on individual comfort.
      * 
-     * @param fitting the comfort value of the individual
-     * @return 1 if the individual survives, 0 if the individual dies
+     * @param fitting The comfort value of the individual.
+     * @return 1 if the individual survives, 0 if the individual dies.
      */
 	@Override
 	public double getRandomTime(double fitting) {
 		double next = random.nextDouble();
 		double probability = (2.0/3)*fitting;
 		if(next<=probability) {
-			return 1; //Individual lives
+			return 1;
 		}
 		else {
-			return 0; //Individual dies
+			return 0;
 		}
-		
 	}
 }

@@ -21,7 +21,7 @@ public class RhoTimeIncrementStrategy extends TimeIncrement{
 	/**
      * Retrieves the singleton instance of the RhoTimeIncrementStrategy class.
      * 
-     * @return the singleton instance of the RhoTimeIncrementStrategy class
+     * @return The singleton instance of the RhoTimeIncrementStrategy class.
      */
 	public static RhoTimeIncrementStrategy getInstance() {
 		if(instance == null) {
@@ -34,23 +34,22 @@ public class RhoTimeIncrementStrategy extends TimeIncrement{
      * Generates a random time increment based on the comfort using the exponential 
      * distribution with mean determined by the comfort and rho.
      * 
-     * @param fitting the comfort value used to calculate the mean of the exponential distribution
-     * @return a random time increment
+     * @param fitting The comfort value used to calculate the mean of the exponential distribution.
+     * @return A random time increment.
      */
 	@Override
 	public double getRandomTime(double fitting) {
 		double m = getMean(fitting);
 		double next = random.nextDouble();
 		double observation = -m*Math.log(1.0-next);
-//		System.out.println("Next Reproduction in: " + observation);
 		return observation;
 	}
 	
 	/**
      * Calculates the mean of the exponential distribution based on the comfort and rho parameters.
      * 
-     * @param fitting the comfort value
-     * @return the mean of the exponential distribution
+     * @param fitting The comfort value.
+     * @return The mean of the exponential distribution.
      */
 	private double getMean(double fitting) {
 		return (1-Math.log(fitting))*DiscreteStochasticSimulation.rho;

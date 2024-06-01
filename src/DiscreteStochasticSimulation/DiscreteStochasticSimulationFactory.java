@@ -8,9 +8,14 @@ import PatrolAllocation.PrintCurrentResults;
  * Sets up parameters that are specific to the simulation.
  */
 public class DiscreteStochasticSimulationFactory implements ComponentFactory{
-	
+    /** Holds a reference to any object that implements the PrintCurrentResults interface. */
 	PrintCurrentResults printResults;
 	
+	/**
+     * Constructor for DiscreteStochasticSimulationFactory.
+     *
+     * @param printResults_ The object implementing the PrintCurrentResults interface.
+     */
 	public DiscreteStochasticSimulationFactory(PrintCurrentResults printResults_) {
 		printResults = printResults_;
 	}
@@ -18,11 +23,7 @@ public class DiscreteStochasticSimulationFactory implements ComponentFactory{
 	/**
      * Initializes the discrete stochastic simulation with parameters provided through command-line arguments.
      * 
-     * @param args the command-line arguments containing simulation parameters
-     *             args[2]: simulation time
-     *             args[5]: mu (parameter for the simulation)
-     *             args[6]: rho (parameter for the simulation)
-     *             args[7]: delta (parameter for the simulation)
+     * @param DSSargs The command-line arguments containing simulation parameters.
      */
 	@Override
 	public void initialize(String[] DSSargs) {

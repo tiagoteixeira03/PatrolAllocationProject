@@ -13,9 +13,9 @@ public class EventReproduction extends Event {
 	/**
      * Constructs an EventReproduction with the specified parameters.
      *
-     * @param ind_ the individual associated with this event
-     * @param solution_ the solution associated with an individual
-     * @param simTime time that the event will be simulated
+     * @param ind_ The individual associated with this event.
+     * @param solution_ The solution associated with an individual.
+     * @param simTime The simulation time when the event occurs.
      */
 	public EventReproduction(Individual ind_, Solution solution_, double simTime) {
 		super(ind_, solution_, simTime);
@@ -25,7 +25,7 @@ public class EventReproduction extends Event {
      * Simulates the reproduction event. This method creates a new individual (child)
      * from the current individual by invoking the newChild method on the child.
      *
-     * @param eventmanager the event manager responsible for scheduling and managing events
+     * @param eventmanager The event manager responsible for scheduling and managing events.
      */
 	public void simulate(EventManager eventmanager) {
 		child = new Individual(eventmanager, solution.getSolutionObject());

@@ -6,8 +6,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class responsible for processing user parameters.
+ */
 public class ProcessUserParameters {
-
+	/**
+     * Processes the command-line arguments provided by the user.
+     * 
+     * @param args The command-line arguments.
+     * @return An array of processed arguments.
+     * @throws IOException If there is an error reading the input file.
+     * @throws IllegalArgumentException If invalid arguments are provided.
+     */
     public static String[] processArgs(String[] args) throws IOException {
         if (args.length == 0) {
             throw new IllegalArgumentException("No arguments provided.");
@@ -18,7 +28,6 @@ public class ProcessUserParameters {
         String stringMatrixC = new String();
 
         if (args[0].equals("-f")) {
-            // Read from file
             if (args.length != 2) {
                 throw new IllegalArgumentException("File path not provided.");
             }
@@ -27,7 +36,6 @@ public class ProcessUserParameters {
                 String line;
                 int paramCounter = 0;
                 while ((line = br.readLine()) != null) {
-                    // Split the line by whitespace and add to processedArgsList or matrixC
                 	for (String param : line.split("\\s+")) {
                     	paramCounter++;
                     	if(paramCounter <= 8) {
@@ -41,7 +49,6 @@ public class ProcessUserParameters {
                 stringMatrixC = String.join("-", matrixC);
             }
         } else if (args[0].equals("-r")) {
-            // Read from command-line args
         	for (int i = 1; i < args.length; i++) {
         	    processedArgsList.add(args[i]);
         	}
@@ -53,7 +60,6 @@ public class ProcessUserParameters {
         
         processedArgsList.add(stringMatrixC);
         
-        // Convert List to Array
         String[] processedArgs = new String[processedArgsList.size()];
         processedArgs = processedArgsList.toArray(processedArgs);
 

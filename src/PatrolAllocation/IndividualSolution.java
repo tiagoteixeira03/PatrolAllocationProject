@@ -14,12 +14,13 @@ import EvolutionaryProgramming.Solution;
 public class IndividualSolution implements Solution {
     /** The partition of patrols, where each patrol is a list of integers. */
 	List<List<Integer>> partition = new ArrayList<List<Integer>>(PatrolAllocation.nrPatrols);
+    /** The time of the solution. */
 	double time;
 	
 	/**
      * Calculates the comfort value of the solution.
      * 
-     * @return the comfort value of the solution
+     * @return The comfort value of the solution.
      */
 	public double getFitting() {
 	    double tz = 0, aux = 0;
@@ -41,21 +42,21 @@ public class IndividualSolution implements Solution {
      * Generates a random solution by randomly assigning planet systems to patrols.
      */
 	public void generateRandomSolution() {
-        // Step 1: Initialize each patrol list
+        // Initialize each patrol list
         for (int i = 0; i < PatrolAllocation.nrPatrols; i++) {
             partition.add(new ArrayList<Integer>());
         }
 
-        // Step 2: Create a list of integers from 1 to m
+        // Create a list of integers from 1 to m
         List<Integer> numbers = new ArrayList<Integer>();
         for (int i = 1; i <= PatrolAllocation.nrPlanetSystems; i++) {
             numbers.add(i);
         }
 
-        // Step 3: Shuffle the list of integers to ensure randomness
+        // Shuffle the list of integers to ensure randomness
         Collections.shuffle(numbers, new Random());
 
-        // Step 4: Randomly assign each integer to a patrol
+        // Randomly assign each integer to a patrol
         Random rand = new Random();
         for (int number : numbers) {
             int patrolIndex = rand.nextInt(PatrolAllocation.nrPatrols);
@@ -69,24 +70,24 @@ public class IndividualSolution implements Solution {
 	public void mutateSolution() {
         Random rand = new Random();
 
-        // Step 1: Select a random patrol that is not empty
+        // Select a random patrol that is not empty
         int fromPatrolIndex;
         do {
             fromPatrolIndex = rand.nextInt(PatrolAllocation.nrPatrols);
         } while (partition.get(fromPatrolIndex).isEmpty());
 
-        // Step 2: Remove a random integer from this selected patrol
+        // Remove a random integer from this selected patrol
         List<Integer> fromPatrol = partition.get(fromPatrolIndex);
         int removedIndex = rand.nextInt(fromPatrol.size());
         int removedValue = fromPatrol.remove(removedIndex);
 
-        // Step 3: Select another patrol (different from the one we removed the integer from)
+        // Select another patrol (different from the one we removed the integer from)
         int toPatrolIndex;
         do {
             toPatrolIndex = rand.nextInt(PatrolAllocation.nrPatrols);
         } while (toPatrolIndex == fromPatrolIndex);
 
-        // Step 4: Add the removed integer to the selected patrol
+        // Add the removed integer to the selected patrol
         partition.get(toPatrolIndex).add(removedValue);
 	}
 	
@@ -94,7 +95,7 @@ public class IndividualSolution implements Solution {
      * Inherits properties from a parent solution by copying the parent's partition and then 
      * randomly adjusting it.
      * 
-     * @param parentSolution the parent solution from which to inherit properties
+     * @param parentSolution The parent solution from which to inherit properties.
      */
 	public void inheritSolution(Solution parentSolution) {
 		IndividualSolution parent = (IndividualSolution) parentSolution;
@@ -114,7 +115,7 @@ public class IndividualSolution implements Solution {
 	    
 	    int IntegersToRemove = (int) Math.floor((1 - this.getFitting()) * PatrolAllocation.nrPlanetSystems);
 
-	    // Step 1: Randomly remove IntegersToRemove integers from the patrols
+	    // Randomly remove IntegersToRemove integers from the patrols
 	    for (int i = 0; i < IntegersToRemove; i++) {
 	        int fromPatrolIndex;
 	        do {
@@ -129,10 +130,10 @@ public class IndividualSolution implements Solution {
 	        removedFromPatrols.add(fromPatrolIndex);
 	    }
 
-	    // Step 2: Shuffle the removed integers to ensure random redistribution
+	    // Shuffle the removed integers to ensure random redistribution
 	    Collections.shuffle(removedIntegers, rand);
 
-	    // Step 3: Randomly redistribute the removed integers across the patrols
+	    // Randomly redistribute the removed integers across the patrols
 	    for (int i = 0; i < removedIntegers.size(); i++) {
 	        int removedValue = removedIntegers.get(i);
 	        int originalPatrol = removedFromPatrols.get(i);
@@ -150,12 +151,17 @@ public class IndividualSolution implements Solution {
 	/**
      * Gets a new instance of the IndividualSolution.
      * 
-     * @return a new IndividualSolution object
+     * @return A new IndividualSolution object.
      */
 	public Solution getSolutionObject() {
 		return new IndividualSolution();
 	}
 	
+	/**
+     * Converts the solution to a string representation.
+     * 
+     * @return A string representation of the solution.
+     */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -175,15 +181,24 @@ public class IndividualSolution implements Solution {
                 sb.append(",");
             }
         }
-
         sb.append("}");
         return sb.toString();
 	}
 	
+	/**
+     * Gets the time of the solution.
+     * 
+     * @return The time of the solution.
+     */
 	public double getTime() {
 		return time;
 	}
 	
+	/**
+     * Clones the current solution object.
+     * 
+     * @return A cloned IndividualSolution object.
+     */
 	public IndividualSolution cloneObject() {
 		IndividualSolution sol;
 		List<List<Integer>> copyPartition = new ArrayList<List<Integer>>(PatrolAllocation.nrPatrols);
@@ -200,6 +215,12 @@ public class IndividualSolution implements Solution {
 		
 	}
 	
+	/**
+     * Checks if two solutions are equal.
+     * 
+     * @param sol2 The solution to compare.
+     * @return True if the solutions are equal, false otherwise.
+     */ 
 	public boolean isSolEqual(Solution sol2) { 
 		
 		IndividualSolution indSol2 = (IndividualSolution)sol2;
@@ -207,15 +228,12 @@ public class IndividualSolution implements Solution {
 		for (int i = 0; i < partition.size(); i++) {
             List<Integer> list1 = partition.get(i);
             List<Integer> list2 = indSol2.partition.get(i);
-            // Check if both inner lists are null
             if (list1 == null && list2 == null) {
                 continue;
             }
-            // Check if one of the inner lists is null
             if (list1 == null || list2 == null) {
                 return false;
             }
-            // Check if the inner lists are equal
             if (!list1.equals(list2)) {
                 return false;
             }

@@ -15,14 +15,20 @@ public class Individual {
 	Population pop = Population.getInstance();
     /** The solution associated with the individual. */
 	Solution solution;
-	double deathTime, repoTime, mutTime;
-	int id;
+	/** The simulation time when the individual dies. */
+    double deathTime;
+    /** The simulation time when the individual reproduces. */
+    double repoTime;
+    /** The simulation time when the individual mutates. */
+    double mutTime;
+    /** The unique identifier of the individual. */
+    int id;
 	
 	/**
      * Constructs a new Individual with the specified event manager and solution.
      * 
-     * @param eventmanager_ the event manager responsible for managing simulation events
-     * @param solution_ the solution associated with the individual
+     * @param eventmanager_ The event manager responsible for managing simulation events.
+     * @param solution_ The solution associated with the individual.
      */
 	public Individual(EventManager eventmanager_, Solution solution_) {
 		eventmanager = eventmanager_;
@@ -32,8 +38,6 @@ public class Individual {
 	
 	/**
      * Initializes the events associated with the individual.
-     * 
-     * @param eventmanager the event manager responsible for managing simulation events
      */
 	public void innitEvents() {
 		double currentTime = eventmanager.getCurrSimTime();
@@ -56,6 +60,8 @@ public class Individual {
 		pop.removeIndfromPop(this);
 	}
 	
+    /** Removes the individual from the population, 
+     * specific to when there is an epidemic event. */
 	public void killIndividualEpidemic() {
 		eventmanager.removeIdEvents(id);
 		pop.removeIndfromPop(this);
@@ -72,7 +78,7 @@ public class Individual {
 	/**
      * Generates a new individual as a child of the specified parent solution.
      * 
-     * @param parentSolution the parent solution from which to inherit
+     * @param parentSolution The parent solution from which to inherit.
      */
 	public void newChild(Solution parentSolution) {
 		solution.inheritSolution(parentSolution);
@@ -81,6 +87,7 @@ public class Individual {
 		pop.addIndtoPop(this);
 	}
 	
+    /** Schedules the next reproduction event for the individual. */
 	public void scheduleNextReproduction() {
 		double currentTime = eventmanager.getCurrSimTime();
 		repoTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Reproduction").getRandomTime(fitting);
@@ -89,6 +96,7 @@ public class Individual {
 		}
 	}
 	
+    /** Schedules the next mutation event for the individual. */
 	public void scheduleNextMutation() {
 		double currentTime = eventmanager.getCurrSimTime();
 		mutTime = currentTime + EvolutionaryProgrammingFactory.strategiesMap.get("Mutation").getRandomTime(fitting);

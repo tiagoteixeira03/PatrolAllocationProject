@@ -21,7 +21,7 @@ public class DeltaTimeIncrementStrategy extends TimeIncrement{
 	/**
      * Retrieves the singleton instance of the DeltaTimeIncrementStrategy class.
      * 
-     * @return the singleton instance of the DeltaTimeIncrementStrategy class
+     * @return The singleton instance of the DeltaTimeIncrementStrategy class.
      */
 	public static DeltaTimeIncrementStrategy getInstance() {
 		if(instance == null) {
@@ -34,8 +34,8 @@ public class DeltaTimeIncrementStrategy extends TimeIncrement{
      * Generates a random time increment based on the comfort using the exponential 
      * distribution with mean determined by the comfort and delta.
      * 
-     * @param fitting the comfort value used to calculate the mean of the exponential distribution
-     * @return a random time increment
+     * @param fitting The comfort value used to calculate the mean of the exponential distribution.
+     * @return A random time increment.
      */
 	@Override
 	public double getRandomTime(double fitting) {
@@ -50,8 +50,8 @@ public class DeltaTimeIncrementStrategy extends TimeIncrement{
 	/**
      * Calculates the mean of the exponential distribution based on the comfort and delta parameters.
      * 
-     * @param fitting the comfort value
-     * @return the mean of the exponential distribution
+     * @param fitting The comfort value.
+     * @return The mean of the exponential distribution.
      */
 	private double getMean(double fitting) {
 		return (1-Math.log(fitting))*DiscreteStochasticSimulation.delta;

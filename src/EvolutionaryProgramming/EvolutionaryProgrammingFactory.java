@@ -16,7 +16,7 @@ public class EvolutionaryProgrammingFactory implements ComponentFactory{
 	List<TimeIncrementStrategy> strategies;
     /** Instance of the EvolutionaryProgramming class. */
 	static HashMap<String, TimeIncrementStrategy> strategiesMap = new HashMap<>();
-    /** ??. */
+    /** A solution for a problem. */
 	Solution solution;
     /** The event manager responsible for scheduling and managing events. */
 	EventManager eventmanager;
@@ -24,9 +24,9 @@ public class EvolutionaryProgrammingFactory implements ComponentFactory{
 	/**
      * Constructs an EvolutionaryProgrammingFactory with the specified strategies and solution.
      *
-     * @param strategies_ the list of time increment strategies
-     * @param solution_ ??
-     * @param eventmanager_ the event manager responsible for scheduling and managing events
+     * @param strategies_ The list of time increment strategies.
+     * @param solution_ A solution for a problem.
+     * @param eventmanager_ The event manager responsible for scheduling and managing events.
      */
 	public EvolutionaryProgrammingFactory(List<TimeIncrementStrategy> strategies_, Solution solution_, EventManager eventmanager_) {
 		strategies = strategies_;
@@ -35,11 +35,9 @@ public class EvolutionaryProgrammingFactory implements ComponentFactory{
 	}
 	
 	/**
-     * Initializes the evolutionary programming components with the specified arguments.
+     * Initializes the evolutionary programming components with parameters provided through command-line arguments.
      *
-     * @param args the array of arguments for initialization
-     * 		 	   args[3]: initial population size
-     *             args[5]: maximum population size
+     * @param EPargs The command-line arguments containing simulation parameters.
      */
 	@Override
 	public void initialize(String[] EPargs) {
@@ -54,6 +52,5 @@ public class EvolutionaryProgrammingFactory implements ComponentFactory{
 		new EvolutionaryProgramming();
 		
 		EvolutionaryProgramming.init(initPopSize_, popMaxSize_, solution, eventmanager);
-		
 	}
 }

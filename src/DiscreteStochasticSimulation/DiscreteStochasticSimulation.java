@@ -3,8 +3,7 @@ package DiscreteStochasticSimulation;
 import PatrolAllocation.PrintCurrentResults;
 
 /**
- * Class that represents ??.
- * It manages the initialization of parameters that are specific to the simulation.
+ * Class that has the parameters required by the DiscreteStochasticSimulation package.
  */
 public class DiscreteStochasticSimulation {
     /** The simulation time. */
@@ -15,15 +14,17 @@ public class DiscreteStochasticSimulation {
 	static double mu;
     /** The value of the parameter delta used in the simulation. */
 	static double delta;
+    /** Holds a reference to any object that implements the PrintCurrentResults interface. */
 	static PrintCurrentResults printResults;
 	
 	/**
      * Initializes the discrete stochastic simulation with the specified parameters.
      *
-     * @param simulationTime_ the simulation time
-     * @param rho_ the value of the parameter rho
-     * @param mu_ the value of the parameter mu
-     * @param delta_ the value of the parameter delta
+     * @param simulationTime_ The simulation time.
+     * @param mu_ The value of the parameter mu.
+     * @param rho_ The value of the parameter rho.
+     * @param delta_ The value of the parameter delta.
+     * @param printResults_ Holds a reference to any object that implements the PrintCurrentResults interface.
      */
 	public static void init(float simulationTime_, double mu_, double rho_, double delta_, PrintCurrentResults printResults_) {
 		simulationTime = simulationTime_;

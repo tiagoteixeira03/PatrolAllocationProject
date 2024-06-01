@@ -6,18 +6,40 @@ import java.util.Iterator;
 import EvolutionaryProgramming.InformationProvider;
 import EvolutionaryProgramming.Solution;
 
+/**
+ * Class responsible for printing the current results of the patrol allocation simulation.
+ */
 public class ResultsPrinter implements PrintCurrentResults {
-    
+    /** The instance of the InformationProvider used to retrieve simulation data. */
     InformationProvider info = PatrolAllocationFactory.info;
+    /** The singleton instance of the ResultsPrinter class. */
     private static ResultsPrinter instance;
+    /** The current instant of the simulation. */
     double currInstant;
-    int numEvents, popSize, numEpidemics, obsNum = 1;
+    /** The number of events in the simulation. */
+    int numEvents;
+    /** The size of the population in the simulation. */
+    int popSize;
+    /** The number of epidemics in the simulation. */
+    int numEpidemics;
+    /** The observation number. */
+    int obsNum = 1;
+    /** The list of best solutions found during the simulation. */
     ArrayList<Solution> bestSols = new ArrayList<>();
+    /** The best fitting value found during the simulation. */
     double bestFitting;
 
+    /**
+     * Private constructor for the ResultsPrinter class.
+     */
     private ResultsPrinter() {
     }
 
+    /**
+     * Retrieves the singleton instance of the ResultsPrinter class.
+     * 
+     * @return The singleton instance of the ResultsPrinter class.
+     */
     public static ResultsPrinter getInstance() {
         if (instance == null) {
             instance = new ResultsPrinter();
@@ -25,6 +47,12 @@ public class ResultsPrinter implements PrintCurrentResults {
         return instance;
     }
 
+    /**
+     * Prints the current observation of the simulation.
+     * 
+     * @param currInstant_ The current instant of the simulation.
+     * @param numEvents_ The number of events in the simulation.
+     */
     @Override
     public void printCurrentResult(double currInstant_, int numEvents_) {
         numEvents = numEvents_;
@@ -37,11 +65,9 @@ public class ResultsPrinter implements PrintCurrentResults {
         Iterator<Solution> it = bestSols.iterator();
 
         String headerFormat = "%s %s:%n";
-        // Add indentation (4 spaces)
         String indent = "               ";
         String dataFormat = indent + "%-35s %s%n";
         String candidateFormat = indent + "%-35s %s : %s : %s%n";
-
         System.out.printf(headerFormat, "Observation", obsNum);
         System.out.printf(dataFormat, "Present instant:", currInstant);
         System.out.printf(dataFormat, "Number of realized events:", numEvents);

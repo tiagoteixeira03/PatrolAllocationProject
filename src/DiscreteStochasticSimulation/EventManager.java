@@ -6,21 +6,31 @@ import EvolutionaryProgramming.IEv;
  * Interface that defines methods for managing events.
  */
 public interface EventManager {
-	/**
-     * Abstract method that schedules an event in the simulation.
-     * 
-     * @param ev the event to be scheduled
+    /**
+     * Schedules an event in the simulation.
+     *
+     * @param ev The event to be scheduled.
      */
-	public void scheduleEvent(IEv ev);
-	
-	public void removeIdEvents(int id);
-	
-	/**
-     * Gets the current simulation time.
-     * 
-     * @return the current simulation time
+    public void scheduleEvent(IEv ev);
+
+    /**
+     * Removes an event with the associated  ID.
+     *
+     * @param id The ID of the event to be removed.
      */
-	public double getCurrSimTime();
-	
-	public int getNumEvents();
+    public void removeIdEvents(int id);
+
+    /**
+     * Retrieves the current simulation time.
+     *
+     * @return The current simulation time.
+     */
+    public double getCurrSimTime();
+
+    /**
+     * Retrieves the number of events currently scheduled in the simulation.
+     *
+     * @return The number of events currently scheduled.
+     */
+    public int getNumEvents();
 }

@@ -26,7 +26,9 @@ public class CreateFactories {
 	private EpidemicStrategy epidemic = EpidemicStrategy.getInstance();
     /** Singleton instance of PEC (Priority Event Container). */
 	private PEC pec = PEC.getInstance();
+    /** Singleton instance of ResultsPrinter. */
 	private ResultsPrinter resultsPrinter = ResultsPrinter.getInstance();
+    /** Singleton instance of InformationProviderClass. */
 	private InformationProviderClass info = InformationProviderClass.getInstance();
 	
 	/**
@@ -47,17 +49,17 @@ public class CreateFactories {
 	/**
      * Initializes the components with the specified arguments.
      * 
-     * @param args the arguments used to initialize the components
+     * @param args The arguments used to initialize the components.
      */
 	public void initializeComponents(String[] args) {
 	    // Extract arguments for PatrolAllocationFactory
-	    String[] patrolAllocationArgs = { args[0], args[1], args[8] }; // Adjust indices based on actual needs
+	    String[] patrolAllocationArgs = { args[0], args[1], args[8] };
 
 	    // Extract arguments for DiscreteStochasticSimulationFactory
-	    String[] discreteStochasticArgs = { args[2], args[5], args[6], args[7] }; // Adjust indices based on actual needs
+	    String[] discreteStochasticArgs = { args[2], args[5], args[6], args[7] };
 
 	    // Extract arguments for EvolutionaryProgrammingFactory
-	    String[] evolutionaryProgrammingArgs = { args[3], args[4]}; // Adjust indices based on actual needs
+	    String[] evolutionaryProgrammingArgs = { args[3], args[4]};
 
 	    // Initialize each factory with their specific arguments
 	    factories.get(0).initialize(patrolAllocationArgs);

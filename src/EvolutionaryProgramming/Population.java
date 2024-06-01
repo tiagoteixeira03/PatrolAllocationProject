@@ -17,12 +17,16 @@ public class Population {
 	static int numIndvInit = EvolutionaryProgramming.initPopSize;
     /** The maximum number of individuals allowed in the population. */
 	static int numIndivMax = EvolutionaryProgramming.popMaxSize;
-	
+    /** The best fitness value. */
 	double bestFitting=0;
+    /** The best solution. */
 	Solution bestSol;
+    /** The ID of the best individual. */
 	int bestID;
-	
-	int currentIndID=0, numEpidemics=0;
+	/** The current indivual ID. */
+    int currentIndID = 0;
+    /** The number of epidemics that have occurred. */
+    int numEpidemics = 0;
 	
     /** Comparator for sorting individuals in the population by comfort. */
 	Comparator<Individual> com = new Comparator<Individual>()
@@ -42,12 +46,7 @@ public class Population {
     /** The priority queue of individuals in the population, sorted by comfort. */
 	private PriorityQueue<Individual> pop = new PriorityQueue<Individual>(com);
 	
-	/**
-     * Constructs the Population class.
-     * 
-     * @param numIndivInit_ the initial number of individuals in the population
-     * @param numIndivMax_ the maximum number of individuals allowed in the population
-     */
+    /** Private constructor to prevent instantiation outside the class. */
 	private Population() {
 			
 	}
@@ -55,7 +54,7 @@ public class Population {
 	/**
      * Retrieves the singleton instance of the Population class.
      * 
-     * @return the singleton instance of the Population class
+     * @return The singleton instance of the Population class.
      */
 	public static Population getInstance() {
 		if(instance==null) {
@@ -65,9 +64,10 @@ public class Population {
 	}
 	
 	/**
-     * Adds an individual to the population.
+     * Adds an individual to the population. Checks if the population size 
+     * is bigger than max, if so start an epidemic.
      * 
-     * @param ind the individual to be added to the population
+     * @param ind The individual to be added to the population.
      */
 	public void addIndtoPop(Individual ind) {
 		pop.add(ind);
@@ -82,6 +82,11 @@ public class Population {
 		}
 	}
 	
+	/**
+     * Updates the position of an individual in the population.
+     *
+     * @param ind The individual whose position needs to be updated.
+     */
 	public void updateIndPosition(Individual ind) {
 		pop.remove(ind);
 		pop.add(ind);
@@ -90,7 +95,7 @@ public class Population {
 	/**
      * Removes an individual from the population.
      * 
-     * @param ind the individual to be removed from the population
+     * @param ind The individual to be removed from the population.
      */
 	public void removeIndfromPop(Individual ind) {
 		pop.remove(ind);
@@ -131,13 +136,17 @@ public class Population {
 		}
 	}
 	
+	/**
+     * Gets the best solutions.
+     *
+     * @return An ArrayList containing the best solutions.
+     */
 	public ArrayList<Solution> getBestInds() {
 	    ArrayList<Solution> bestInds = new ArrayList<>(6);
 	    ArrayList<Individual> inds = new ArrayList<>();
 	    Individual ind;
 	    Boolean isSolValid=true;
 
-	    // Poll individuals from pop and add to inds list
 	    bestInds.add(bestSol);
 	    for(int i = 0; i < 5; i++) {
 	        if(!pop.isEmpty()) {
@@ -161,16 +170,13 @@ public class Population {
 	            }
 	            
 	        } else {
-	            break; // Exit loop if pop is empty
+	            break;
 	        }
 	    }
 
-	    // Reinsert polled individuals back into pop
 	    for(int i = 0; i < inds.size(); i++) {
 	        pop.add(inds.get(i));
 	    }
-
 	    return bestInds;
 	}
-
 }

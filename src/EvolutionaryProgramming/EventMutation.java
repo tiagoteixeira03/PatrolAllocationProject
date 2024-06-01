@@ -13,10 +13,9 @@ public class EventMutation extends Event {
 	/**
      * Constructs an EventMutation with the specified parameters.
      *
-     * @param ind_ the individual associated with this event
-     * @param eventmanager_ the event manager responsible for scheduling and managing events
-     * @param timestrat_ the strategy used to increment the event's occurring simulation time
-     * @param solution_ the solution associated with an individual
+     * @param ind_ The individual associated with this event.
+     * @param solution_ The solution associated with an individual.
+     * @param simTime The simulation time when the event occurs.
      */
 	public EventMutation(Individual ind_, Solution solution_, double simTime) {
 		super(ind_, solution_, simTime);
@@ -26,7 +25,7 @@ public class EventMutation extends Event {
      * Simulates the mutation event. This method performs the mutation of an individual
      * by invoking the mutateSolution method on the associated solution.
      *
-     * @param eventmanager the event manager responsible for scheduling and managing events
+     * @param eventmanager The event manager responsible for scheduling and managing events.
      */
 	public void simulate(EventManager eventmanager) {
 		solution.mutateSolution();

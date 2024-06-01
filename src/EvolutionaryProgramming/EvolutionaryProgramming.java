@@ -5,9 +5,7 @@ import java.util.HashMap;
 import DiscreteStochasticSimulation.EventManager;
 
 /**
- * Class that represents ??.
- * Manages the initialization of the population and the time increment strategies 
- * used in the simulation.
+ * Class that has the parameters required by the EvolutionaryProgramming package.
  */
 public class EvolutionaryProgramming {
     /** The initial population size. */
@@ -16,7 +14,7 @@ public class EvolutionaryProgramming {
 	static int popMaxSize;
     /** A map of strategy names to their corresponding time increment strategies. */
 	static HashMap<String, TimeIncrementStrategy> strategiesMap = new HashMap<>();
-    /** ??. */
+    /** A solution for a problem. */
 	static Solution solution;
     /** The event manager responsible for scheduling and managing events. */
 	static EventManager eventmanager;
@@ -24,12 +22,12 @@ public class EvolutionaryProgramming {
 	static Individual ind;
 	
 	/**
-     * Initializes the evolutionary programming simulation with the specified parameters.
+     * Initializes the EvolutionaryProgramming package with the specified parameters.
      *
-     * @param initPopSize_ the initial population size
-     * @param popMaxSize_ the maximum population size
-     * @param solution_ ??
-     * @param eventmanager_ event manager responsible for scheduling and managing events
+     * @param initPopSize_ The initial population size.
+     * @param popMaxSize_ The maximum population size.
+     * @param solution_ A solution for a problem.
+     * @param eventmanager_ The event manager responsible for scheduling and managing events.
      */
 	public static void init(int initPopSize_, int popMaxSize_, Solution solution_, EventManager eventmanager_) {
 		initPopSize = initPopSize_;

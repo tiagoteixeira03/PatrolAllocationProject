@@ -21,7 +21,7 @@ public class MuTimeIncrementStrategy extends TimeIncrement{
 	/**
      * Retrieves the singleton instance of the MuTimeIncrementStrategy class.
      * 
-     * @return the singleton instance of the MuTimeIncrementStrategy class
+     * @return The singleton instance of the MuTimeIncrementStrategy class.
      */
 	public static MuTimeIncrementStrategy getInstance() {
 		if(instance == null) {
@@ -34,23 +34,22 @@ public class MuTimeIncrementStrategy extends TimeIncrement{
      * Generates a random time increment based on the comfort using the exponential 
      * distribution with mean determined by the comfort and mu.
      * 
-     * @param fitting the comfort value used to calculate the mean of the exponential distribution
-     * @return a random time increment
+     * @param fitting The comfort value used to calculate the mean of the exponential distribution.
+     * @return A random time increment.
      */
 	@Override
 	public double getRandomTime(double fitting) {
 		double m = getMean(fitting);
 		double next = random.nextDouble();
 		double observation = -m*Math.log(1.0-next);
-//		System.out.println("Event will live for: " + observation);
 		return observation;
 	}
 	
 	/**
      * Calculates the mean of the exponential distribution based on the comfort and mu parameters.
      * 
-     * @param fitting the comfort value
-     * @return the mean of the exponential distribution
+     * @param fitting The comfort value.
+     * @return The mean of the exponential distribution.
      */
 	private double getMean(double fitting) {
 		return (1-Math.log(1-fitting))*DiscreteStochasticSimulation.mu;

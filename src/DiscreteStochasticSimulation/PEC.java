@@ -18,6 +18,7 @@ public class PEC implements EventManager {
 	private static PEC instance;
     /** The current simulation time. */
     private double simTime = 0;
+    /** The number of events simulated. */
     private int numofEventsSim=0;
     
     /** Comparator for sorting events by simulation time. */
@@ -47,7 +48,7 @@ public class PEC implements EventManager {
 	/**
      * Retrieves the singleton instance of the PEC class.
      * 
-     * @return the singleton instance of the PEC class
+     * @return The singleton instance of the PEC class.
      */
 	public static PEC getInstance() {
 		if(instance==null) {
@@ -59,17 +60,17 @@ public class PEC implements EventManager {
 	/**
      * Schedules an event in the PEC.
      * 
-     * @param ev the event to be scheduled
+     * @param ev The event to be scheduled.
      */
 	@Override
 	public void scheduleEvent(IEv ev) {
-		pec.add(ev);//We need to implement the verification to check if the add is valid
+		pec.add(ev);
 	}
 	
 	/**
      * Retrieves and removes the next event from the PEC.
      * 
-     * @return the next event from the PEC
+     * @return The next event from the PEC.
      */
 	public IEv nextEvPEC() {
 		IEv nextEvent = null;
@@ -83,7 +84,7 @@ public class PEC implements EventManager {
 	/**
      * Gets the current simulation time.
      * 
-     * @return the current simulation time
+     * @return The current simulation time.
      */
 	@Override
 	public double getCurrSimTime() {
@@ -103,7 +104,7 @@ public class PEC implements EventManager {
 
 	    while (!pec.isEmpty()) {
 	        ev = nextEvPEC();
-	        simTime = ev.getSimTime(); // Update simTime to the event's simulation time
+	        simTime = ev.getSimTime();
 
 	        if (simTime > DiscreteStochasticSimulation.simulationTime) {
 	            return;
@@ -114,26 +115,30 @@ public class PEC implements EventManager {
 	    }
 	}
 
-
+	/**
+     * Removes an event with the associated ID.
+     *
+     * @param id The ID of the event to be removed.
+     */
 	@Override
 	public void removeIdEvents(int id) {
-	    // Create a list to store events that need to be removed
 	    List<IEv> eventsToRemove = new ArrayList<>();
 	    
-	    // Iterate through the priority queue to find events to remove
 	    for (IEv event : pec) {
 	        if (event.getIndID() == id) {
 	            eventsToRemove.add(event);
 	        }
 	    }
 	    
-	    // Remove the events after the iteration
 	    pec.removeAll(eventsToRemove);
 	}
 	
+	/**
+     * Retrieves the number of events currently scheduled in the simulation.
+     *
+     * @return The number of events currently scheduled.
+     */
 	public int getNumEvents() {
 		return numofEventsSim;
 	}
-	
-	
 }
