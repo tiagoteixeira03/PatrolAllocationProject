@@ -8,7 +8,6 @@ import java.util.PriorityQueue;
 
 import EvolutionaryProgramming.IEv;
 
-
 /**
  * The PEC (Pending Event Container) class represents a queue of pending events in a discrete stochastic simulation.
  * It manages the scheduling and execution of events based on their simulation time.
@@ -16,28 +15,29 @@ import EvolutionaryProgramming.IEv;
 public class PEC implements EventManager {
     /** The singleton instance of the PEC class. */
 	private static PEC instance;
+    
     /** The current simulation time. */
     private double simTime = 0;
+    
     /** The number of events simulated. */
-    private int numofEventsSim=0;
+    private int numofEventsSim = 0;
     
     /** Comparator for sorting events by simulation time. */
-	Comparator<IEv> com = new Comparator<IEv>()
-	{
-			@Override
-			public int compare(IEv o1, IEv o2) {
-				double t1=o1.getSimTime(), t2=o2.getSimTime();
-				if(t1>t2) 
-					return 1;
-				else if(t1==t2)
-					return 0;
-				else
-					return -1;
-			}
-	};
+	Comparator<IEv> com = new Comparator<IEv>() {
+        @Override
+        public int compare(IEv o1, IEv o2) {
+            double t1 = o1.getSimTime(), t2 = o2.getSimTime();
+            if (t1 > t2)
+                return 1;
+            else if (t1 == t2)
+                return 0;
+            else
+                return -1;
+        }
+    };
 	
     /** The priority queue of events sorted by simulation time. */
-	private PriorityQueue<IEv> pec = new PriorityQueue<IEv>(com);  
+	private PriorityQueue<IEv> pec = new PriorityQueue<IEv>(com);
 	
     /** Iterator for traversing events in the PEC. */
 	Iterator<IEv> it = pec.iterator();
@@ -51,7 +51,7 @@ public class PEC implements EventManager {
      * @return The singleton instance of the PEC class.
      */
 	public static PEC getInstance() {
-		if(instance==null) {
+		if (instance == null) {
 			instance = new PEC();
 		}
 		return instance;	
@@ -75,7 +75,7 @@ public class PEC implements EventManager {
 	public IEv nextEvPEC() {
 		IEv nextEvent = null;
 		
-		if(!pec.isEmpty()) {
+		if (!pec.isEmpty()) {
 			nextEvent = pec.remove();
 		}
 		return nextEvent;
@@ -98,10 +98,12 @@ public class PEC implements EventManager {
 	    double nextPrint = DiscreteStochasticSimulation.simulationTime / 20;
 	    IEv ev;
 	    
-	    for(double i=1; i<=20; i++) {
-	    	new EventObservation(i*nextPrint, this);
+	    // Schedule observation events at the maxSimTime/20 intervals
+	    for (double i = 1; i <= 20; i++) {
+	    	new EventObservation(i * nextPrint, this);
 	    }
 
+	    // Process events until the PEC is empty or simulation time is exceeded
 	    while (!pec.isEmpty()) {
 	        ev = nextEvPEC();
 	        simTime = ev.getSimTime();
@@ -116,20 +118,22 @@ public class PEC implements EventManager {
 	}
 
 	/**
-     * Removes an event with the associated ID.
+     * Removes events with the associated ID.
      *
-     * @param id The ID of the event to be removed.
+     * @param id The ID of the events to be removed.
      */
 	@Override
 	public void removeIdEvents(int id) {
 	    List<IEv> eventsToRemove = new ArrayList<>();
 	    
+	    // Collect events with the given ID
 	    for (IEv event : pec) {
 	        if (event.getIndID() == id) {
 	            eventsToRemove.add(event);
 	        }
 	    }
 	    
+	    // Remove the collected events from the priority queue
 	    pec.removeAll(eventsToRemove);
 	}
 	

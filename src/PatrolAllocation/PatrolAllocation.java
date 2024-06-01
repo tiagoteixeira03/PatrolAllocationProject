@@ -34,6 +34,7 @@ public class PatrolAllocation {
 		nrPatrols = nrPatrols_;
 		nrPlanetSystems = nrPlanetSystems_;
 		matrixC = new int[nrPatrols][nrPlanetSystems];
+		//If the user selected -r as an argument create a random matrix
 		if(stringMatrixC.equals("RANDOM_MATRIX")) {
 			generateRandomMatrix();
 		}

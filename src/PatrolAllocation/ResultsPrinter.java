@@ -31,9 +31,9 @@ public class ResultsPrinter implements PrintCurrentResults {
 
     /**
      * Private constructor for the ResultsPrinter class.
+     * Prevents instantiation from outside the class.
      */
-    private ResultsPrinter() {
-    }
+    private ResultsPrinter() {}
 
     /**
      * Retrieves the singleton instance of the ResultsPrinter class.
@@ -55,6 +55,7 @@ public class ResultsPrinter implements PrintCurrentResults {
      */
     @Override
     public void printCurrentResult(double currInstant_, int numEvents_) {
+        // Update the current state of the simulation
         numEvents = numEvents_;
         currInstant = currInstant_;
         popSize = PatrolAllocation.info.getPopSize();
@@ -62,18 +63,24 @@ public class ResultsPrinter implements PrintCurrentResults {
         bestSols = PatrolAllocation.info.getBestSols();
         Solution sol;
 
+        // Iterator to traverse through the best solutions
         Iterator<Solution> it = bestSols.iterator();
 
+        // Formats for printing the results
         String headerFormat = "%s %s:%n";
         String indent = "               ";
         String dataFormat = indent + "%-35s %s%n";
         String candidateFormat = indent + "%-35s %s : %s : %s%n";
+        
+        // Print the observation header
         System.out.printf(headerFormat, "Observation", obsNum);
+        // Print the current state data
         System.out.printf(dataFormat, "Present instant:", currInstant);
         System.out.printf(dataFormat, "Number of realized events:", numEvents);
         System.out.printf(dataFormat, "Population size:", popSize);
         System.out.printf(dataFormat, "Number of epidemics:", numEpidemics);
 
+        // Print the best solution and other candidate solutions if available
         if (it.hasNext()) {
             sol = it.next();
             System.out.printf(dataFormat, "Best distribution of the patrols:", sol.toString());
@@ -90,6 +97,7 @@ public class ResultsPrinter implements PrintCurrentResults {
                 }
             }
         }
+        // Increment the observation number for the next print
         obsNum++;
     }
 }

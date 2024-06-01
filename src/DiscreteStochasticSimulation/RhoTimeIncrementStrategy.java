@@ -14,9 +14,7 @@ public class RhoTimeIncrementStrategy extends TimeIncrement{
 	static RhoTimeIncrementStrategy instance=null;
 	
     /** Private constructor to prevent instantiation outside the class. */
-	private RhoTimeIncrementStrategy() {
-		
-	}
+	private RhoTimeIncrementStrategy() {}
 	
 	/**
      * Retrieves the singleton instance of the RhoTimeIncrementStrategy class.
@@ -39,9 +37,9 @@ public class RhoTimeIncrementStrategy extends TimeIncrement{
      */
 	@Override
 	public double getRandomTime(double fitting) {
-		double m = getMean(fitting);
+		double m = getMean(fitting);// Calculate the mean based on fitting
 		double next = random.nextDouble();
-		double observation = -m*Math.log(1.0-next);
+		double observation = -m*Math.log(1.0-next);// Calculate the time increment using the exponential distribution formula
 		return observation;
 	}
 	
@@ -52,6 +50,6 @@ public class RhoTimeIncrementStrategy extends TimeIncrement{
      * @return The mean of the exponential distribution.
      */
 	private double getMean(double fitting) {
-		return (1-Math.log(fitting))*DiscreteStochasticSimulation.rho;
+		return (1-Math.log(fitting))*DiscreteStochasticSimulation.rho;// Calculate the mean using the provided formula
 	}
 }
